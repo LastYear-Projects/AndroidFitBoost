@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">firebasetest</string>
+    <string name="bing_maps_api_key">ArT-9i31X83ZfNqLQi1N4KsIf3ul23JAgm5k3g-T9bhl9phDTlTIFkdAfF9RWKWt</string>
+    <string name="google_map_api_key">AIzaSyDkPc4W1FsLuHTg9yf2wOh4Vfiq-ev9VJw</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "380063102948",
+    "project_id": "examplechat-b93e4",
+    "storage_bucket": "examplechat-b93e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380063102948:android:ef51e6dd1df841bf3e79f1",
+        "android_client_info": {
+          "package_name": "com.example.firebasetest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8vlVP3fdIqu4GBPBTYfvZkJkByEAp-Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380063102948:android:5d0669aca90515123e79f1",
+        "android_client_info": {
+          "package_name": "com.example.youtubeexample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8vlVP3fdIqu4GBPBTYfvZkJkByEAp-Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

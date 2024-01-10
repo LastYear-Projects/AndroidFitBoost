@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.firebasetest.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataFragment"
+        android:name="com.example.firebasetest.DataFragment"
+        android:label="fragment_data"
+        tools:layout="@layout/fragment_data" >
+        <action
+            android:id="@+id/action_dataFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue="&quot;&quot;" />
+
+
+    </fragment>
+</navigation>
