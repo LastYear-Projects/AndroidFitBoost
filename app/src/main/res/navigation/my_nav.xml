@@ -27,7 +27,7 @@
         <argument
             android:name="message"
             app:argType="string"
-            android:defaultValue="&quot;&quot;" />
+             />
 
 
     </fragment>

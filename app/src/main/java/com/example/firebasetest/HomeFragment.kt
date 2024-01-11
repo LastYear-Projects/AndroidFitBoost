@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
-import org.w3c.dom.Text
 
 
 class HomeFragment : Fragment() {
@@ -23,9 +22,9 @@ class HomeFragment : Fragment() {
 
         val button = view.findViewById<Button>(R.id.button3)
         button.setOnClickListener{
-            val userInput = view.findViewById<EditText>(R.id.inputText).text.toString()
-            val action = HomeFragmentDirections.actionHomeFragmentToDataFragment(userInput)
-            findNavController().navigate(action)
+//            val userInput = view.findViewById<EditText>(R.id.inputText).text.toString()
+//            val action = HomeFragmentDirections.actionHomeFragmentToDataFragment(userInput)
+//            findNavController().navigate(action)
         }
         return view
     }
