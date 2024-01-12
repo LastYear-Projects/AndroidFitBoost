@@ -8,25 +8,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
+import com.example.firebasetest.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
-
-
-        val button = view.findViewById<Button>(R.id.button3)
-        button.setOnClickListener{
-//            val userInput = view.findViewById<EditText>(R.id.inputText).text.toString()
-//            val action = HomeFragmentDirections.actionHomeFragmentToDataFragment(userInput)
-//            findNavController().navigate(action)
-        }
-        return view
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
 
 }
