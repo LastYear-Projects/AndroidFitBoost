@@ -16,7 +16,13 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/settings"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="Settings" />
+        android:id="@+id/exercise"
+        android:icon="@drawable/exercise"
+        android:title="Exercise" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/meal_plans"
+        android:icon="@drawable/meal_plans"
+        android:title="Meal Plans" />
 </menu>

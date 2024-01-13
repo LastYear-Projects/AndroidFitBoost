@@ -3,7 +3,6 @@ package com.example.firebasetest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.firebasetest.R
 import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
 
 class HomeFragment2Activity : AppCompatActivity() {
@@ -20,7 +19,9 @@ class HomeFragment2Activity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(DataFragment())
-                R.id.settings -> replaceFragment(DataFragment())
+                R.id.exercise -> replaceFragment(ExerciseFragment())
+                R.id.meal_plans -> replaceFragment(MealPlansFragment())
+
 
                 else ->{
 

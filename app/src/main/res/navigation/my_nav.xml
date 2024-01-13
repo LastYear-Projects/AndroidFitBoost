@@ -24,11 +24,24 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="message"
-            app:argType="string"
-             />
+        <action
+            android:id="@+id/action_dataFragment_to_mealPlansFragment"
+            app:destination="@id/mealPlansFragment" />
 
 
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.firebasetest.ExerciseFragment"
+        android:label="fragment_execerise"
+        tools:layout="@layout/fragment_execerise" />
+    <fragment
+        android:id="@+id/mealPlansFragment"
+        android:name="com.example.firebasetest.MealPlansFragment"
+        android:label="fragment_meal_plans"
+        tools:layout="@layout/fragment_meal_plans" >
+        <action
+            android:id="@+id/action_mealPlansFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
     </fragment>
 </navigation>
