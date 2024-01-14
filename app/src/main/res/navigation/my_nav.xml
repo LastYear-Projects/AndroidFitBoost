@@ -32,14 +32,14 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.example.firebasetest.ExerciseFragment"
+        android:name="com.example.firebasetest.AddExerciseFragment"
         android:label="fragment_execerise"
-        tools:layout="@layout/fragment_execerise" />
+        tools:layout="@layout/fragment_addexecerise" />
     <fragment
         android:id="@+id/mealPlansFragment"
-        android:name="com.example.firebasetest.MealPlansFragment"
+        android:name="com.example.firebasetest.FavoriteFragment"
         android:label="fragment_meal_plans"
-        tools:layout="@layout/fragment_meal_plans" >
+        tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_mealPlansFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />

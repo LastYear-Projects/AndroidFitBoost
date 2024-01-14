@@ -19,8 +19,8 @@ class HomeFragment2Activity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(DataFragment())
-                R.id.exercise -> replaceFragment(ExerciseFragment())
-                R.id.meal_plans -> replaceFragment(MealPlansFragment())
+                R.id.exercise -> replaceFragment(AddExerciseFragment())
+                R.id.favorite -> replaceFragment(FavoriteFragment())
 
 
                 else ->{
