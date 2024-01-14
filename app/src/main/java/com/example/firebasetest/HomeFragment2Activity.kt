@@ -18,7 +18,7 @@ class HomeFragment2Activity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.profile -> replaceFragment(DataFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.exercise -> replaceFragment(AddExerciseFragment())
                 R.id.favorite -> replaceFragment(FavoriteFragment())
 
