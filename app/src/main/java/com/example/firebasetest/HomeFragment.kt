@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
         gymList = ArrayList()
-
+        // TODO -> fetch all the exercises from the DB and add to the gymList
         gymList.add(Gym(R.drawable.first, "Your First Workout"))
         gymList.add(Gym(R.drawable.second, "Your Second Workout"))
         gymList.add(Gym(R.drawable.third, "Your Third Workout"))
