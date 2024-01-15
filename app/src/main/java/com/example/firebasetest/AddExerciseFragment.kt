@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
 import com.example.firebasetest.databinding.FragmentAddexeceriseBinding
 import com.example.firebasetest.databinding.FragmentFavoriteBinding
@@ -22,6 +24,10 @@ class AddExerciseFragment : Fragment() {
     private lateinit var bindingTest: FragmentModalNewExerciseBinding
     private lateinit var imageView: ImageView
     private lateinit var customDialog: AlertDialog
+
+    private lateinit var execeriseList: ArrayList<Execerise>
+    private lateinit var execeriseAdapter: ExeceriseAdapter
+    private lateinit var ExeceriseRecyclerView: RecyclerView
 
     companion object{
         val IMAGE_REQUEST_CODE = 100
@@ -36,6 +42,18 @@ class AddExerciseFragment : Fragment() {
         binding = FragmentAddexeceriseBinding.inflate(inflater, container, false)
         bindingTest = FragmentModalNewExerciseBinding.inflate(inflater, container, false)
         imageView = binding.imgSave
+
+        binding.execeriseRecyclerView.setHasFixedSize(true)
+        binding.execeriseRecyclerView.layoutManager = LinearLayoutManager(activity)
+
+        execeriseList = ArrayList()
+        // TODO -> fetch all the exercises from the DB and add to the gymList
+        execeriseList.add(Execerise("First", "5","3"))
+        execeriseList.add(Execerise("Second", "5","3"))
+        execeriseList.add(Execerise("Third", "5","3"))
+
+        execeriseAdapter = ExeceriseAdapter(execeriseList)
+        binding.execeriseRecyclerView.adapter = execeriseAdapter
 
         imageView.setOnClickListener {
             pickImageGallery()
