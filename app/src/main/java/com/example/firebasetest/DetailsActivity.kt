@@ -9,7 +9,7 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_deatiled)
+        setContentView(R.layout.activity_detailed)
 
         val gym = intent.getParcelableExtra<Gym>("gym")
         if(gym != null){
