@@ -214,22 +214,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27">
 
         <Button
-            android:id="@+id/btnFEET"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FEET"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <Button
             android:id="@+id/btnCM"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="3dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:backgroundTint="#FFFFFF"
             android:text="CM"
@@ -290,22 +280,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24">
 
         <Button
-            android:id="@+id/btnLBS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="LBS"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <Button
             android:id="@+id/btnKG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:layout_marginEnd="3dp"
+            android:layout_marginEnd="5dp"
             style="?android:attr/buttonBarButtonStyle"
             android:text="KG"
             android:backgroundTint="#FFFFFF"
