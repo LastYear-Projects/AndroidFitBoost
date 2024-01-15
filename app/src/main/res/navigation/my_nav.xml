@@ -13,17 +13,15 @@
         <action
             android:id="@+id/action_homeFragment_to_dataFragment"
             app:destination="@id/dataFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/dataFragment"
         android:name="com.example.firebasetest.ProfileFragment"
         android:label="fragment_data"
         tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_dataFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_dataFragment_to_mealPlansFragment"
             app:destination="@id/mealPlansFragment" />
@@ -44,4 +42,9 @@
             android:id="@+id/action_mealPlansFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.firebasetest.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>
