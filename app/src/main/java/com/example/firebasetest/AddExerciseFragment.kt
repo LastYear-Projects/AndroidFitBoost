@@ -1,5 +1,6 @@
 package com.example.firebasetest
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -47,13 +49,20 @@ class AddExerciseFragment : Fragment() {
         binding.execeriseRecyclerView.layoutManager = LinearLayoutManager(activity)
 
         execeriseList = ArrayList()
-        // TODO -> fetch all the exercises from the DB and add to the gymList
-        execeriseList.add(Execerise("First", "5","3"))
-        execeriseList.add(Execerise("Second", "5","3"))
-        execeriseList.add(Execerise("Third", "5","3"))
+//        execeriseList.add(Execerise("First", "5","3"))
+//        execeriseList.add(Execerise("Second", "5","3"))
+//        execeriseList.add(Execerise("Third", "5","3"))
+
+        ExeceriseRecyclerView = binding.execeriseRecyclerView
+        ExeceriseRecyclerView.setHasFixedSize(true)
+        ExeceriseRecyclerView.layoutManager = LinearLayoutManager(activity)
+
 
         execeriseAdapter = ExeceriseAdapter(execeriseList)
         binding.execeriseRecyclerView.adapter = execeriseAdapter
+
+
+
 
         imageView.setOnClickListener {
             pickImageGallery()
@@ -71,8 +80,6 @@ class AddExerciseFragment : Fragment() {
             resetButtonColors()
             it.setBackgroundColor(Color.GRAY)
         }
-
-
         binding.btnAddExercises.setOnClickListener {
             showCustomDialog()
         }
@@ -100,6 +107,7 @@ class AddExerciseFragment : Fragment() {
         binding.btnAdvanced.setBackgroundColor(Color.BLACK)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun showCustomDialog() {
         // Inflate the custom layout
         val customLayout = layoutInflater.inflate(R.layout.fragment_modal_new_exercise, null)
@@ -114,10 +122,28 @@ class AddExerciseFragment : Fragment() {
 
         val tvExerciseCreateExercise = customLayout.findViewById<TextView>(R.id.tvExerciseCreateExercise)
         tvExerciseCreateExercise.setOnClickListener {
-            //TODO -> save the exercise before we close.
+            val exerciseName = customLayout.findViewById<EditText>(R.id.tvExerciseName).text.toString()
+            val exerciseExplanation = customLayout.findViewById<EditText>(R.id.tvExerciseExplanation).text.toString()
+            val exerciseRepeats = customLayout.findViewById<EditText>(R.id.tvExerciseExplanationRepeatsEditText).text.toString()
+            val exerciseSets = customLayout.findViewById<EditText>(R.id.tvExerciseExplanationSetsEditText).text.toString()
+
+
+            // Create a new exercise
+            val newExercise = Execerise(exerciseName, exerciseRepeats, exerciseSets)
+
+            // Add the new exercise to the list
+            execeriseList.add(newExercise)
+
+            // Notify the adapter about the data change
+            execeriseAdapter.notifyDataSetChanged()
+
+            // Close the dialog
             customDialog.dismiss()
         }
     }
 
 
 }
+
+
+
