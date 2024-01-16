@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_room_nav"
+    app:startDestination="@id/roomUserListFragment">
+
+    <fragment
+        android:id="@+id/roomUserListFragment"
+        android:name="com.example.firebasetest.RoomUserListFragment"
+        android:label="fragment_room_user_list"
+        tools:layout="@layout/fragment_room_user_list" >
+        <action
+            android:id="@+id/action_roomUserListFragment_to_roomUserAddFragment"
+            app:destination="@id/roomUserAddFragment" />
+        <action
+            android:id="@+id/action_roomUserListFragment_to_roomUpdateUserFragment"
+            app:destination="@id/roomUpdateUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomUserAddFragment"
+        android:name="com.example.firebasetest.RoomUserAddFragment"
+        android:label="fragment_room_user_add"
+        tools:layout="@layout/fragment_room_user_add" >
+        <action
+            android:id="@+id/action_roomUserAddFragment_to_roomUserListFragment"
+            app:destination="@id/roomUserListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomUpdateUserFragment"
+        android:name="com.example.firebasetest.RoomUpdateUserFragment"
+        android:label="fragment_room_update_user"
+        tools:layout="@layout/fragment_room_update_user" >
+        <action
+            android:id="@+id/action_roomUpdateUserFragment_to_roomUserListFragment"
+            app:destination="@id/roomUserListFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.firebasetest.RoomUser" />
+    </fragment>
+</navigation>
