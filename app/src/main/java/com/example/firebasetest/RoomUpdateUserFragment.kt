@@ -1,8 +1,12 @@
 package com.example.firebasetest
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -35,6 +39,13 @@ class RoomUpdateUserFragment : Fragment() {
             updateItem()
         }
 
+        view.findViewById<Button>(R.id.room_menu_deleteBTN).setOnClickListener {
+            deleteUser()
+        }
+
+        // Add Menu
+        setHasOptionsMenu(true)
+
         return view
     }
 
@@ -55,5 +66,23 @@ class RoomUpdateUserFragment : Fragment() {
     private fun inputCheck(fullName: String, email: String): Boolean{
         return (fullName.isNotEmpty() && email.isNotEmpty())
     }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes"){_,_->
+            mUserViewModel.deleteUser(args.currentUser)
+            Toast.makeText(requireContext(),"Successfully removed: ${args.currentUser.fullName}", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_roomUpdateUserFragment_to_roomUserListFragment)
+
+        }
+
+        builder.setNegativeButton("No"){_,_->
+
+        }
+        builder.setTitle("Delete ${args.currentUser.fullName}?")
+        builder.create().show()
+
+    }
+
 
 }

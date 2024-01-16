@@ -29,4 +29,10 @@ class RoomUserViewModel(application: Application): AndroidViewModel(application)
             repository.updateUser(user)
         }
     }
+
+    fun deleteUser(user: RoomUser){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteUser(user)
+        }
+    }
 }

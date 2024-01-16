@@ -12,4 +12,8 @@ class RoomUserRepository(private val userDao:RoomUserDao) {
     suspend fun updateUser(user:RoomUser){
         userDao.updateUser(user)
     }
+
+    suspend fun deleteUser(user:RoomUser){
+        userDao.deleteUser(user)
+    }
 }
