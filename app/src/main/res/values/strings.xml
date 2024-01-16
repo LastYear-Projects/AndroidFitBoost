@@ -4,4 +4,5 @@
     <string name="google_map_api_key">AIzaSyDkPc4W1FsLuHTg9yf2wOh4Vfiq-ev9VJw</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="remove_exercise">Remove exercise</string>
 </resources>
