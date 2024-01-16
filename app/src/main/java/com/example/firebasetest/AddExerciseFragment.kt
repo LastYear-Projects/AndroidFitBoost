@@ -30,6 +30,7 @@ class AddExerciseFragment : Fragment() {
     private lateinit var execeriseList: ArrayList<Execerise>
     private lateinit var execeriseAdapter: ExeceriseAdapter
     private lateinit var ExeceriseRecyclerView: RecyclerView
+    private lateinit var titleTextView: TextView
 
     companion object{
         val IMAGE_REQUEST_CODE = 100
@@ -43,7 +44,8 @@ class AddExerciseFragment : Fragment() {
 
         binding = FragmentAddexeceriseBinding.inflate(inflater, container, false)
         bindingTest = FragmentModalNewExerciseBinding.inflate(inflater, container, false)
-        imageView = binding.imgSave
+        imageView = binding.imgSavePic
+        titleTextView = binding.textView15
 
         binding.execeriseRecyclerView.setHasFixedSize(true)
         binding.execeriseRecyclerView.layoutManager = LinearLayoutManager(activity)
@@ -60,8 +62,6 @@ class AddExerciseFragment : Fragment() {
 
         execeriseAdapter = ExeceriseAdapter(execeriseList)
         binding.execeriseRecyclerView.adapter = execeriseAdapter
-
-
 
 
         imageView.setOnClickListener {
@@ -133,6 +133,7 @@ class AddExerciseFragment : Fragment() {
 
             // Add the new exercise to the list
             execeriseList.add(newExercise)
+            updateTitleWithExerciseCount()
 
             // Notify the adapter about the data change
             execeriseAdapter.notifyDataSetChanged()
@@ -140,6 +141,11 @@ class AddExerciseFragment : Fragment() {
             // Close the dialog
             customDialog.dismiss()
         }
+
+    }
+    private fun updateTitleWithExerciseCount() {
+        val title = "Exercises (${execeriseList.size}) :"
+        titleTextView.text = title
     }
 
 
