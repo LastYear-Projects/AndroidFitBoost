@@ -18,4 +18,12 @@ class RoomUserRepository(private val userDao: RoomUserDao) {
     suspend fun deleteUser(user: RoomUser){
         userDao.deleteUser(user)
     }
+
+    fun getUser(userId: Int): LiveData<RoomUser> {
+        return userDao.getUserById(userId)
+    }
+
+    suspend fun getUserByEmail(email: String): RoomUser {
+        return userDao.getUserByEmail(email)
+    }
 }

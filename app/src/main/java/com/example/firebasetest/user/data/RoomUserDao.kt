@@ -23,4 +23,10 @@ interface RoomUserDao {
 
     @Query("SELECT * FROM user_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<RoomUser>>
+
+    @Query("SELECT * FROM user_table WHERE id = :userId")
+    fun getUserById(userId: Int): LiveData<RoomUser>
+
+    @Query("SELECT * FROM user_table WHERE email = :email")
+    suspend fun getUserByEmail(email: String): RoomUser
 }

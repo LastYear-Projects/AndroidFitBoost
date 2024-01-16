@@ -32,9 +32,17 @@ class SignInActivity : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if(it.isSuccessful){
 
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+//                        val intent = Intent(this, MainActivity::class.java)
+                        val user = firebaseAuth.currentUser
+                        if (user != null) {
+                            val intent = Intent(this, HomeFragment2Activity::class.java)
+                            intent.putExtra("USER", user)
+                            startActivity(intent)
+                            finish()
+                        }
+//                        val intent = Intent(this, HomeFragment2Activity::class.java)
+//                        startActivity(intent)
+//                        finish()
                     }else{
                         Toast.makeText(this, "Email or password are incorrect.", Toast.LENGTH_SHORT).show()
                     }

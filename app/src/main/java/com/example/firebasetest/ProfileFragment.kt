@@ -1,5 +1,3 @@
-package com.example.firebasetest
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -8,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.firebasetest.FavoriteFragment
 import com.example.firebasetest.databinding.FragmentProfileBinding
+import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var imageView: ImageView
 
     private var isEditMode = false
+    private lateinit var mUserViewModel: RoomUserViewModel
 
     companion object{
         val IMAGE_REQUEST_CODE = 100
@@ -25,6 +27,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         imageView = binding.imageView
+        mUserViewModel = ViewModelProvider(this).get(RoomUserViewModel::class.java)
 
         disableEditModeFirst()
 
@@ -73,24 +76,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun fetchDataAndPopulateUI() {
-        // TODO: Implement your logic to fetch data and update UI
-        // For demonstration purposes, setting placeholder values
-
-        val fullName = "Your Full Name"
-        val phoneNumber = "Your Phone Number"
-        val email = "Your Email"
-        val weight = "Your Weight"
-        val height = "Your Height"
-        val gender = "Your Gender"
-        val age = "Your Age"
-
-        binding.tvProfileName.text = createEditable(fullName)
-        binding.tvProfilePhone.text = createEditable(phoneNumber)
-        binding.tvProfileEmail.text = createEditable(email)
-        binding.tvProfileWeight.text = createEditable(weight)
-        binding.tvProfileHeight.text = createEditable(height)
-        binding.tvProfileGender.text = createEditable(gender)
-        binding.tvProfileAge.text = createEditable(age)
+        // Fetch the current user data from the ViewModel
+        mUserViewModel.getCurrentUserLiveData().observe(viewLifecycleOwner, { currentUser ->
+            // Update UI with the current user's data
+            binding.tvProfileName.text = createEditable(currentUser.fullName)
+//            binding.tvProfilePhone.text = createEditable(currentUser.phone)
+            binding.tvProfileEmail.text = createEditable(currentUser.email)
+//            binding.tvProfileWeight.text = createEditable(currentUser.weight)
+//            binding.tvProfileHeight.text = createEditable(currentUser.height)
+//            binding.tvProfileGender.text = createEditable(currentUser.gender)
+//            binding.tvProfileAge.text = createEditable(currentUser.age)
+        })
     }
 
     private fun disableEditModeFirst(){
