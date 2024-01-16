@@ -30,7 +30,7 @@ class FavoriteFragment : Fragment() {
         var view = inflater.inflate(R.layout.fragment_favorite, container, false)
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         button = binding.btnPickImage
-        imageView = binding.imgSave
+        imageView = binding.imgSavePic
 
         binding.openModalButton.setOnClickListener {
             showCustomDialog()
