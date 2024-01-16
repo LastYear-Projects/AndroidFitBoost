@@ -1,9 +1,12 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.firebasetest.user.model.RoomUser
+import com.example.firebasetest.user.data.RoomUserDatabase
+import com.example.firebasetest.user.repository.RoomUserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -1,9 +1,10 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.firebasetest.user.model.RoomUser
 
 @Database(entities = [RoomUser::class], version = 1,  exportSchema = false)
 abstract class RoomUserDatabase: RoomDatabase() {
@@ -14,7 +15,7 @@ abstract class RoomUserDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: RoomUserDatabase? = null
 
-        fun getDatabase(context: Context): RoomUserDatabase{
+        fun getDatabase(context: Context): RoomUserDatabase {
             val tempInstance = INSTANCE
             if(tempInstance != null){
                 return tempInstance
@@ -25,7 +26,7 @@ abstract class RoomUserDatabase: RoomDatabase() {
                     RoomUserDatabase::class.java,
                     "user_database"
                 ).build()
-                INSTANCE= instance
+                INSTANCE = instance
                 return instance
             }
         }

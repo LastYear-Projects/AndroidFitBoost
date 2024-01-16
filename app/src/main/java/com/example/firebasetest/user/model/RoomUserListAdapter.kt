@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.model
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebasetest.R
+import com.example.firebasetest.user.fragments.RoomUserListFragmentDirections
 
 class RoomUserListAdapter: RecyclerView.Adapter<RoomUserListAdapter.MyViewHolder>() {
 

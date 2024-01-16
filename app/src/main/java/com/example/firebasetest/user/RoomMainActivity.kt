@@ -1,9 +1,8 @@
-package com.example.firebasetest
+package com.example.firebasetest.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.firebasetest.R
 
 class RoomMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

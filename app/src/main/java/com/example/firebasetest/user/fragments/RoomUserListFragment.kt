@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebasetest.R
+import com.example.firebasetest.user.model.RoomUserListAdapter
+import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 

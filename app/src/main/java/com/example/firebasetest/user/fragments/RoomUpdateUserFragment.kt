@@ -1,12 +1,9 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -15,6 +12,9 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.firebasetest.R
+import com.example.firebasetest.user.model.RoomUser
+import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 
 
 class RoomUpdateUserFragment : Fragment() {

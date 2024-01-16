@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.model
 
 import android.os.Parcel
 import android.os.Parcelable

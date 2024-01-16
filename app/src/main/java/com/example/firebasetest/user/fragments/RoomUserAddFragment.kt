@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.firebasetest.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.firebasetest.R
+import com.example.firebasetest.user.model.RoomUser
+import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 
 
 class RoomUserAddFragment : Fragment() {
