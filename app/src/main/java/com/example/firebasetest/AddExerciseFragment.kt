@@ -60,7 +60,9 @@ class AddExerciseFragment : Fragment() {
         ExeceriseRecyclerView.layoutManager = LinearLayoutManager(activity)
 
 
-        execeriseAdapter = ExeceriseAdapter(execeriseList)
+        execeriseAdapter = ExeceriseAdapter(execeriseList){
+            updateTitleWithExercisesCount()
+        }
         binding.execeriseRecyclerView.adapter = execeriseAdapter
 
 
@@ -85,6 +87,11 @@ class AddExerciseFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun updateTitleWithExercisesCount() {
+        val title = "Exercises (${execeriseList.size}) :"
+        titleTextView.text = title
     }
 
     private fun pickImageGallery() {
@@ -133,7 +140,8 @@ class AddExerciseFragment : Fragment() {
 
             // Add the new exercise to the list
             execeriseList.add(newExercise)
-            updateTitleWithExerciseCount()
+            updateTitleWithExercisesCount()
+
 
             // Notify the adapter about the data change
             execeriseAdapter.notifyDataSetChanged()
@@ -142,10 +150,6 @@ class AddExerciseFragment : Fragment() {
             customDialog.dismiss()
         }
 
-    }
-    private fun updateTitleWithExerciseCount() {
-        val title = "Exercises (${execeriseList.size}) :"
-        titleTextView.text = title
     }
 
 
