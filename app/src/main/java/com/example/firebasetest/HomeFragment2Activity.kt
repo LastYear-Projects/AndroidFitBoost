@@ -37,7 +37,6 @@ class HomeFragment2Activity : AppCompatActivity() {
                 R.id.map -> {
                     val intent = Intent(this, CurrentAndroidLocation::class.java)
                     startActivity(intent)
-                    finish()
                 }
                 R.id.logout -> {
                     if(firebaseAuth.currentUser != null){
