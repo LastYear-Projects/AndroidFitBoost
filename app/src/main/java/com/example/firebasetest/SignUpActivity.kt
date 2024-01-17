@@ -31,20 +31,37 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
+            val fullName = binding.fullNameEt.text.toString()
             val email = binding.emailEt.text.toString()
             val password = binding.passET.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
             val phone = binding.phoneEt.text.toString()
+            val weight = binding.weightEt.text.toString()
+            val height = binding.weightEt.text.toString()
+            val gender = binding.weightEt.text.toString()
+            val age = binding.weightEt.text.toString()
             val regex = Regex("^\\d+\$")
 
-            if (email.isNotEmpty() && password.isNotEmpty() && confirmPass.isNotEmpty() && phone.isNotEmpty()) {
+            if (fullName.isNotEmpty() &&
+                phone.isNotEmpty() &&
+                email.isNotEmpty() &&
+                password.isNotEmpty() &&
+                confirmPass.isNotEmpty() &&
+                weight.isNotEmpty() &&
+                height.isNotEmpty() &&
+                gender.isNotEmpty() &&
+                age.isNotEmpty()) {
                 binding.emailLayout.isErrorEnabled = false
                 binding.passwordLayout.isErrorEnabled = false
                 binding.confirmPasswordLayout.isErrorEnabled = false
                 binding.phone.isErrorEnabled = false
+                binding.fullName.isErrorEnabled = false
+                binding.weightLayout.isErrorEnabled = false
+                binding.heightLayout.isErrorEnabled = false
+                binding.genderLayout.isErrorEnabled = false
+                binding.ageLayout.isErrorEnabled = false
 
                 if (!regex.matches(phone)) {
-                    Toast.makeText(this, "Phone must be digits only.", Toast.LENGTH_SHORT).show()
                     binding.phone.isErrorEnabled = true
                     binding.phone.error = "Phone must be digits only."
                 } else {
@@ -77,14 +94,21 @@ class SignUpActivity : AppCompatActivity() {
                                 }
                             }
                     } else {
-                        Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
                         binding.confirmPasswordLayout.isErrorEnabled = true
                         binding.confirmPasswordLayout.error = "Password is not matching"
                     }
                 }
             } else {
-                Toast.makeText(this, "All the fields are required.", Toast.LENGTH_SHORT).show()
-                email.isEmpty()&& password.isNotEmpty() && confirmPass.isNotEmpty() && phone.isNotEmpty()
+                if(binding.fullNameEt.text.toString().isEmpty()){
+                    binding.fullName.isErrorEnabled = true
+                    binding.fullName.error = "FullName can't be empty"
+                }
+
+                if(binding.phoneEt.text.toString().isEmpty()) {
+                    binding.phone.isErrorEnabled = true
+                    binding.phone.error = "Phone can't be empty"
+                }
+
                 if(binding.emailEt.text.toString().isEmpty()){
                     binding.emailLayout.isErrorEnabled = true
                     binding.emailLayout.error = "Email can't be empty"
@@ -100,10 +124,26 @@ class SignUpActivity : AppCompatActivity() {
                     binding.confirmPasswordLayout.error = "Confirm Password can't be empty"
                 }
 
-                if(binding.phoneEt.text.toString().isEmpty()) {
-                    binding.phone.isErrorEnabled = true
-                    binding.phone.error = "Phone can't be empty"
+                if(binding.weightEt.text.toString().isEmpty()){
+                    binding.weightLayout.isErrorEnabled = true
+                    binding.weightLayout.error = "Weight can't be empty"
                 }
+
+                if(binding.heightEt.text.toString().isEmpty()){
+                    binding.heightLayout.isErrorEnabled = true
+                    binding.heightLayout.error = "Height can't be empty"
+                }
+
+                if(binding.genderEt.text.toString().isEmpty()){
+                    binding.genderLayout.isErrorEnabled = true
+                    binding.genderLayout.error = "Gender can't be empty"
+                }
+
+                if(binding.ageEt.text.toString().isEmpty()){
+                    binding.ageLayout.isErrorEnabled = true
+                    binding.ageLayout.error = "Age can't be empty"
+                }
+
 
             }
         }

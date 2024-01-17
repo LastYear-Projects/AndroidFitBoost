@@ -225,6 +225,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Weight"
+            android:textColor="#3A4750"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Height"
+            android:textColor="#3A4750"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Gender"
+            android:textColor="#3A4750"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/heightLayout" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Age"
+            android:textColor="#3A4750"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genderLayout" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -243,13 +295,13 @@
             android:id="@+id/weightLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/yellow"
-            android:layout_marginHorizontal="16dp"
             app:hintTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textView27">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/weightEt"
@@ -269,7 +321,7 @@
             app:hintTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weightLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textView28">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/heightEt"
@@ -282,14 +334,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/genderLayout"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/yellow"
             app:hintTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/heightLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textView29">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/genderEt"
@@ -302,14 +354,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ageLayout"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:boxStrokeColor="@color/yellow"
             app:hintTextColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genderLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textView30">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ageEt"
