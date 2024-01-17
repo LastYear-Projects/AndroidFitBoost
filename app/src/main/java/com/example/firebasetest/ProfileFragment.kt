@@ -171,7 +171,9 @@ class ProfileFragment : Fragment() {
         // Set editable or not editable based on the mode
         binding.tvProfileName.isEnabled = isEditMode
         binding.tvProfilePhone.isEnabled = isEditMode
-        binding.tvProfileEmail.isEnabled = isEditMode
+//        binding.tvProfileEmail.isEnabled = isEditMode
+        // can edit every field except the email.
+        binding.tvProfileEmail.isEnabled = false
         binding.tvProfileWeight.isEnabled = isEditMode
         binding.tvProfileHeight.isEnabled = isEditMode
         binding.tvProfileGender.isEnabled = isEditMode
