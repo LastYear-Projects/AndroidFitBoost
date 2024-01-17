@@ -395,8 +395,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
 
     <Button
         android:id="@+id/btnSave"
@@ -421,6 +420,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileAge"
         android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnResetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Reset Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

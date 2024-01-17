@@ -5,15 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
+import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var imageView: ImageView
+
+    private lateinit var auth: FirebaseAuth
 
     private var isEditMode = false
     private lateinit var mUserViewModel: RoomUserViewModel
@@ -28,6 +33,8 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         imageView = binding.imageView
         mUserViewModel = ViewModelProvider(this).get(RoomUserViewModel::class.java)
+
+        auth = FirebaseAuth.getInstance()
 
         disableEditModeFirst()
 
@@ -59,6 +66,18 @@ class ProfileFragment : Fragment() {
             // Handle Cancel button click
             fetchDataAndPopulateUI()
             toggleEditMode()
+        }
+
+        binding.btnResetPassword.setOnClickListener {
+            val email = binding.tvProfileEmail.text.toString()
+            auth.sendPasswordResetEmail(email).addOnCompleteListener{
+                if(it.isSuccessful){
+                    // email is send
+                    Toast.makeText(requireContext(), "Email sent!", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireContext(), it.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
