@@ -68,7 +68,7 @@
             android:id="@+id/phoneEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your Full Name"
+            android:hint="Type your Phone Number"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 

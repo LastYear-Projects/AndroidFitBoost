@@ -38,10 +38,19 @@ class SignUpActivity : AppCompatActivity() {
             val regex = Regex("^\\d+\$")
 
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPass.isNotEmpty() && phone.isNotEmpty()) {
+                binding.emailLayout.isErrorEnabled = false
+                binding.passwordLayout.isErrorEnabled = false
+                binding.confirmPasswordLayout.isErrorEnabled = false
+                binding.phone.isErrorEnabled = false
+
                 if (!regex.matches(phone)) {
                     Toast.makeText(this, "Phone must be digits only.", Toast.LENGTH_SHORT).show()
+                    binding.phone.isErrorEnabled = true
+                    binding.phone.error = "Phone must be digits only."
                 } else {
+                    binding.phone.isErrorEnabled = false
                     if (password == confirmPass) {
+                        binding.confirmPasswordLayout.isErrorEnabled = false
                         firebaseAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener {
                                 if (it.isSuccessful) {
@@ -69,10 +78,33 @@ class SignUpActivity : AppCompatActivity() {
                             }
                     } else {
                         Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                        binding.confirmPasswordLayout.isErrorEnabled = true
+                        binding.confirmPasswordLayout.error = "Password is not matching"
                     }
                 }
             } else {
                 Toast.makeText(this, "All the fields are required.", Toast.LENGTH_SHORT).show()
+                email.isEmpty()&& password.isNotEmpty() && confirmPass.isNotEmpty() && phone.isNotEmpty()
+                if(binding.emailEt.text.toString().isEmpty()){
+                    binding.emailLayout.isErrorEnabled = true
+                    binding.emailLayout.error = "Email can't be empty"
+                }
+
+                if(binding.passET.text.toString().isEmpty()){
+                    binding.passwordLayout.isErrorEnabled = true
+                    binding.passwordLayout.error = "Password can't be empty"
+                }
+
+                if(binding.confirmPassEt.text.toString().isEmpty()){
+                    binding.confirmPasswordLayout.isErrorEnabled = true
+                    binding.confirmPasswordLayout.error = "Confirm Password can't be empty"
+                }
+
+                if(binding.phoneEt.text.toString().isEmpty()) {
+                    binding.phone.isErrorEnabled = true
+                    binding.phone.error = "Phone can't be empty"
+                }
+
             }
         }
     }
