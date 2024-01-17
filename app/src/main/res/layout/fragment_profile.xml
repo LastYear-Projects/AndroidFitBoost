@@ -395,6 +395,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        style="?attr/materialButtonOutlinedStyle"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
 
     <Button
@@ -403,6 +407,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Save"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        style="?attr/materialButtonOutlinedStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.693"
         app:layout_constraintStart_toStartOf="parent"
@@ -415,6 +423,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Cancel"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        style="?attr/materialButtonOutlinedStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toStartOf="parent"
@@ -423,9 +435,14 @@
 
     <Button
         android:id="@+id/btnResetPassword"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Reset Password"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
