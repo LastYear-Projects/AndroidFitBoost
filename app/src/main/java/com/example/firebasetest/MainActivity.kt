@@ -30,11 +30,14 @@ class MainActivity : AppCompatActivity() {
             val user = firebaseAuth.currentUser
             if( user != null){
                 // Make this page like a Loader that before the pages are upload they will see a Loader.
-                val intent = Intent(this, HomePageActivity::class.java).also {
-                    it.putExtra("details", user.email)
-                    startActivity(it)
-                    finish()
-                } //Create the HomePage and change it for the homepage.
+//                val intent = Intent(this, HomePageActivity::class.java).also {
+//                    it.putExtra("details", user.email)
+//                    startActivity(it)
+//                    finish()
+//                } //Create the HomePage and change it for the homepage.
+                val intent = Intent(this, HomeFragment2Activity::class.java)
+                startActivity(intent)
+                finish()
             }else{
                 val intent = Intent(this, SignInActivity::class.java)
                 startActivity(intent)
