@@ -40,8 +40,10 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Default location set to Tel Aviv, Israel
         val defaultLocation = LatLng(latitude, longitude)
-        mGoogleMap?.addMarker(MarkerOptions().position(defaultLocation).title("Your Current Location"))
+        mGoogleMap?.addMarker(MarkerOptions().position(defaultLocation).title("Your Current Location $latitude $longitude"))
         mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
+
+        //TODO -> Fetch the all favorite Exercise from the current user and add markers for each one.
 
         // Move the camera to the specified location
 //        mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLng(locationLatLng))
