@@ -103,6 +103,7 @@ class ProfileFragment : Fragment() {
             binding.tvProfileHeight.visibility = View.GONE
             binding.tvProfileGender.visibility = View.GONE
             binding.tvProfileAge.visibility = View.GONE
+            binding.btnResetPassword.visibility = View.GONE
             binding.imageView.visibility = View.GONE
             binding.textView16.visibility = View.GONE
             binding.textView2.visibility = View.GONE
@@ -124,6 +125,7 @@ class ProfileFragment : Fragment() {
             binding.tvProfileGender.visibility = View.VISIBLE
             binding.tvProfileAge.visibility = View.VISIBLE
             binding.imageView.visibility = View.VISIBLE
+            binding.btnResetPassword.visibility = View.VISIBLE
             binding.textView16.visibility = View.VISIBLE
             binding.textView2.visibility = View.VISIBLE
             binding.textView20.visibility = View.VISIBLE
