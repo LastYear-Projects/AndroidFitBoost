@@ -33,7 +33,12 @@ class HomeFragment2Activity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.exercise -> replaceFragment(AddExerciseFragment())
-                R.id.favorite -> replaceFragment(FavoriteFragment())
+//                R.id.favorite -> replaceFragment(FavoriteFragment())
+                R.id.map -> {
+                    val intent = Intent(this, CurrentAndroidLocation::class.java)
+                    startActivity(intent)
+                    finish()
+                }
                 R.id.logout -> {
                     if(firebaseAuth.currentUser != null){
                         val builder = AlertDialog.Builder(this)

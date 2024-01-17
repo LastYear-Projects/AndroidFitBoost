@@ -22,13 +22,20 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/favorite"
-        android:icon="@drawable/baseline_star_outline_24"
-        android:title="Favorite" />
+        android:id="@+id/map"
+        android:icon="@drawable/baseline_map_24"
+        android:title="Map" />
+<!--    <item-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/favorite"-->
+<!--        android:icon="@drawable/baseline_star_outline_24"-->
+<!--        android:title="Favorite" />-->
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/logout"
         android:icon="@drawable/baseline_logout_24"
         android:title="Logout" />
+
 </menu>
