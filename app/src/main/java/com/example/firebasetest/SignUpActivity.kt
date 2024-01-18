@@ -3,6 +3,7 @@ package com.example.firebasetest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.databinding.ActivitySignUpBinding
@@ -10,11 +11,13 @@ import com.example.firebasetest.user.RoomMainActivity
 import com.example.firebasetest.user.model.RoomUser
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var mUserViewModel: RoomUserViewModel
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,8 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
         mUserViewModel = ViewModelProvider(this).get(RoomUserViewModel::class.java)
 
         binding.textView.setOnClickListener {
@@ -75,6 +80,9 @@ class SignUpActivity : AppCompatActivity() {
                                     val user = RoomUser(0, fullName , email, weight, height, gender, age, phone)
                                     // Add the user to the Room database
                                     mUserViewModel.addUser(user)
+
+                                    // Save the user to Firestore
+                                    saveUserToFirestore(user)
 
                                     Toast.makeText(
                                         this,
@@ -144,8 +152,37 @@ class SignUpActivity : AppCompatActivity() {
                     binding.ageLayout.error = "Age can't be empty"
                 }
 
-
             }
         }
+
     }
+
+    private fun saveUserToFirestore(user: RoomUser) {
+        val userMap = hashMapOf(
+            "fullName" to user.fullName,
+            "email" to user.email,
+            "weight" to user.weight,
+            "height" to user.height,
+            "gender" to user.gender,
+            "age" to user.age,
+            "phone" to user.phone
+        )
+
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val userDocument = firestore.collection("users").document(userId)
+
+            userDocument.set(userMap)
+                .addOnSuccessListener {
+                    Log.d("Firestore", "User data added successfully")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("Firestore", "Error adding user data", e)
+                }
+        } else {
+            Log.e("Firestore", "Current user is null. User data not saved to Firestore.")
+        }
+    }
+
 }
