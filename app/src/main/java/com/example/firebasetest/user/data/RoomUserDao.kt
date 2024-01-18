@@ -21,12 +21,12 @@ interface RoomUserDao {
     @Delete
     suspend fun deleteUser(user: RoomUser)
 
-    @Query("SELECT * FROM user_table ORDER BY id ASC")
+    @Query("SELECT * FROM user_table2 ORDER BY id ASC")
     fun readAllData(): LiveData<List<RoomUser>>
 
-    @Query("SELECT * FROM user_table WHERE id = :userId")
+    @Query("SELECT * FROM user_table2 WHERE id = :userId")
     fun getUserById(userId: Int): LiveData<RoomUser>
 
-    @Query("SELECT * FROM user_table WHERE email = :email")
+    @Query("SELECT * FROM user_table2 WHERE email = :email")
     suspend fun getUserByEmail(email: String): RoomUser
 }

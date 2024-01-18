@@ -35,19 +35,19 @@ class RoomUserAddFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-        val fullName = view?.findViewById<EditText>(R.id.RoomFullNameEt)?.text.toString()
-        val email = view?.findViewById<EditText>(R.id.RoomEmailEt)?.text.toString()
-
-        if(inputCheck(fullName, email)){
-            val user = RoomUser(0, fullName, email)
-            // Add the user to the database
-            mUserViewModel.addUser(user)
-            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
-            // navigate back to the userList page.
-            findNavController().navigate(R.id.action_roomUserAddFragment_to_roomUserListFragment)
-        }else{
-            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
-        }
+//        val fullName = view?.findViewById<EditText>(R.id.RoomFullNameEt)?.text.toString()
+//        val email = view?.findViewById<EditText>(R.id.RoomEmailEt)?.text.toString()
+//
+//        if(inputCheck(fullName, email)){
+//            val user = RoomUser(0, fullName, email)
+//            // Add the user to the database
+//            mUserViewModel.addUser(user)
+//            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
+//            // navigate back to the userList page.
+//            findNavController().navigate(R.id.action_roomUserAddFragment_to_roomUserListFragment)
+//        }else{
+//            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
+//        }
     }
 
     private fun inputCheck(fullName: String, email: String): Boolean{

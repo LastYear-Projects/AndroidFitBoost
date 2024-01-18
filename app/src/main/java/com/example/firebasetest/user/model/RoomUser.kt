@@ -5,17 +5,25 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "user_table")
+@Entity(tableName = "user_table2")
 data class RoomUser(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val fullName: String,
-    val email: String
+    val email: String,
+    val weight: String,
+    val height: String,
+    val gender: String,
+    val age: String
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
     ) {
     }
 
@@ -23,6 +31,10 @@ data class RoomUser(
         parcel.writeInt(id)
         parcel.writeString(fullName)
         parcel.writeString(email)
+        parcel.writeString(weight)
+        parcel.writeString(height)
+        parcel.writeString(gender)
+        parcel.writeString(age)
     }
 
     override fun describeContents(): Int {

@@ -50,17 +50,17 @@ class RoomUpdateUserFragment : Fragment() {
     }
 
     private fun updateItem(){
-        val fullName = view?.findViewById<EditText>(R.id.RoomUpdateFullNameEt)
-        val email = view?.findViewById<EditText>(R.id.RoomUpdateEmailEt)
-
-        if(inputCheck(fullName.toString(), email.toString())){
-            val updatedUser = RoomUser(args.currentUser.id, fullName?.text.toString(), email?.text.toString())
-            mUserViewModel.updateUser(updatedUser)
-            Toast.makeText(requireContext(),"Updated Successfully!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_roomUpdateUserFragment_to_roomUserListFragment)
-        }else{
-            Toast.makeText(requireContext(),"Please fill all fields.", Toast.LENGTH_SHORT).show()
-        }
+//        val fullName = view?.findViewById<EditText>(R.id.RoomUpdateFullNameEt)
+//        val email = view?.findViewById<EditText>(R.id.RoomUpdateEmailEt)
+//
+//        if(inputCheck(fullName.toString(), email.toString())){
+//            val updatedUser = RoomUser(args.currentUser.id, fullName?.text.toString(), email?.text.toString())
+//            mUserViewModel.updateUser(updatedUser)
+//            Toast.makeText(requireContext(),"Updated Successfully!", Toast.LENGTH_SHORT).show()
+//            findNavController().navigate(R.id.action_roomUpdateUserFragment_to_roomUserListFragment)
+//        }else{
+//            Toast.makeText(requireContext(),"Please fill all fields.", Toast.LENGTH_SHORT).show()
+//        }
     }
 
     private fun inputCheck(fullName: String, email: String): Boolean{
