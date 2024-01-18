@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.firebasetest.user.model.RoomUser
-@Database(entities = [RoomUser::class], version = 5, exportSchema = false)
+@Database(entities = [RoomUser::class], version = 1, exportSchema = false)
 abstract class RoomUserDatabase : RoomDatabase() {
 
     abstract fun userDao(): RoomUserDao
@@ -25,7 +25,7 @@ abstract class RoomUserDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     RoomUserDatabase::class.java,
-                    "user_database2"
+                    "user_database3"
                 ).build()
                 INSTANCE = instance
                 return instance

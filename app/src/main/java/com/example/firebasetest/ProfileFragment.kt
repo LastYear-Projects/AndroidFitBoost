@@ -149,12 +149,12 @@ class ProfileFragment : Fragment() {
         mUserViewModel.getCurrentUserLiveData().observe(viewLifecycleOwner, { currentUser ->
             // Update UI with the current user's data
             binding.tvProfileName.text = createEditable(currentUser.fullName)
-//            binding.tvProfilePhone.text = createEditable(currentUser.phone)
+            binding.tvProfilePhone.text = createEditable(currentUser.phone)
             binding.tvProfileEmail.text = createEditable(currentUser.email)
-//            binding.tvProfileWeight.text = createEditable(currentUser.weight)
-//            binding.tvProfileHeight.text = createEditable(currentUser.height)
-//            binding.tvProfileGender.text = createEditable(currentUser.gender)
-//            binding.tvProfileAge.text = createEditable(currentUser.age)
+            binding.tvProfileWeight.text = createEditable(currentUser.weight)
+            binding.tvProfileHeight.text = createEditable(currentUser.height)
+            binding.tvProfileGender.text = createEditable(currentUser.gender)
+            binding.tvProfileAge.text = createEditable(currentUser.age)
             binding.loader.visibility = View.GONE
             checkVisible()
         })

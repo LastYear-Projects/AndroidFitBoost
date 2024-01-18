@@ -5,7 +5,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "user_table2")
+@Entity(tableName = "user_table3")
 data class RoomUser(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
@@ -14,10 +14,12 @@ data class RoomUser(
     val weight: String,
     val height: String,
     val gender: String,
-    val age: String
+    val age: String,
+    val phone: String
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,

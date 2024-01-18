@@ -72,7 +72,7 @@ class SignUpActivity : AppCompatActivity() {
                             .addOnCompleteListener {
                                 if (it.isSuccessful) {
                                     // Create RoomUser instance
-                                    val user = RoomUser(0, fullName , email, weight, height, gender, age)
+                                    val user = RoomUser(0, fullName , email, weight, height, gender, age, phone)
                                     // Add the user to the Room database
                                     mUserViewModel.addUser(user)
 
