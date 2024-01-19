@@ -73,6 +73,7 @@ class ProfileFragment : Fragment() {
             // Handle Cancel button click
             fetchDataAndPopulateUI()
             toggleEditMode()
+            Toast.makeText(requireContext(), "Cancel...", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnResetPassword.setOnClickListener {
@@ -166,7 +167,6 @@ class ProfileFragment : Fragment() {
             checkVisible()
         })
 
-        Toast.makeText(requireContext(), "Cancel...", Toast.LENGTH_SHORT).show()
     }
 
     private fun disableEditModeFirst(){
