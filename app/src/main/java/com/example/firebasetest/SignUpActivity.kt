@@ -174,8 +174,10 @@ class SignUpActivity : AppCompatActivity() {
             val userDocument = firestore.collection("users").document(userId)
 
             userDocument.set(userMap)
-                .addOnSuccessListener {
-                    Log.d("Firestore", "User data added successfully")
+                .addOnSuccessListener { documentReference ->
+                    // Get the document ID from the DocumentReference using getId()
+                    val documentId = documentReference
+                    Log.d("Firestore", "User data added successfully. Document ID: $documentId")
                 }
                 .addOnFailureListener { e ->
                     Log.w("Firestore", "Error adding user data", e)
@@ -184,5 +186,7 @@ class SignUpActivity : AppCompatActivity() {
             Log.e("Firestore", "Current user is null. User data not saved to Firestore.")
         }
     }
+
+
 
 }

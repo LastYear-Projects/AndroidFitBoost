@@ -1,6 +1,7 @@
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +12,19 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
 import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
+import com.example.firebasetest.user.model.RoomUser
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var imageView: ImageView
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
+
 
     private var isEditMode = false
     private lateinit var mUserViewModel: RoomUserViewModel
@@ -32,6 +38,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         imageView = binding.imageView
+        firestore = FirebaseFirestore.getInstance()
         mUserViewModel = ViewModelProvider(this).get(RoomUserViewModel::class.java)
 
         auth = FirebaseAuth.getInstance()
@@ -158,6 +165,8 @@ class ProfileFragment : Fragment() {
             binding.loader.visibility = View.GONE
             checkVisible()
         })
+
+        Toast.makeText(requireContext(), "Cancel...", Toast.LENGTH_SHORT).show()
     }
 
     private fun disableEditModeFirst(){
@@ -202,8 +211,67 @@ class ProfileFragment : Fragment() {
         binding.imageView.isEnabled = isEditMode
     }
 
-    private fun saveDataAndUpdateUI() {
-        // TODO: Implement your logic to save data
-        // Update UI if needed after saving data
+    private fun saveDataAndUpdateUI(){
+        val currentUser = auth.currentUser?.uid
+        Toast.makeText(requireContext(),"$currentUser", Toast.LENGTH_SHORT).show()
+
+        val userId = mUserViewModel.getCurrentUserLiveData().value?.id
+
+        if(inputCheck(binding.tvProfileName.text.toString(),
+                binding.tvProfileEmail.text.toString(),
+                binding.tvProfileWeight.text.toString(),
+                binding.tvProfileHeight.text.toString(),
+                binding.tvProfileGender.text.toString(),
+                binding.tvProfileAge.text.toString(), binding.tvProfilePhone.text.toString())){
+            val updatedUser = userId?.let {
+                RoomUser(
+                    it,
+                    binding.tvProfileName.text.toString(),
+                    binding.tvProfileEmail.text.toString(),
+                    binding.tvProfileWeight.text.toString(),
+                    binding.tvProfileHeight.text.toString(),
+                    binding.tvProfileGender.text.toString(),
+                    binding.tvProfileAge.text.toString(),
+                    binding.tvProfilePhone.text.toString())
+            }
+
+            if (updatedUser != null) {
+                mUserViewModel.updateUser(updatedUser)
+                updateFirestoreUser()
+            }
+
+            Toast.makeText(requireContext(),"Updated Successfully!", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireContext(),"Cancel...", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateFirestoreUser() {
+        val userMap = mapOf(
+            "fullName" to binding.tvProfileName.text.toString(),
+            "email" to binding.tvProfileEmail.text.toString(),
+            "weight" to binding.tvProfileWeight.text.toString(),
+            "height" to binding.tvProfileHeight.text.toString(),
+            "gender" to binding.tvProfileGender.text.toString(),
+            "age" to binding.tvProfileAge.text.toString(),
+            "phone" to binding.tvProfilePhone.text.toString()
+        )
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val userDocument = firestore.collection("users").document(userId)
+
+            userDocument.update(userMap)
+
+
+        } else {
+            Log.e("Firestore", "Current user is null. User data not saved to Firestore.")
+        }
+    }
+
+
+    private fun inputCheck(fullName: String, email: String, weight: String, height:String, gender: String, age:String, phone: String): Boolean{
+        return (fullName.isNotEmpty() && email.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && gender.isNotEmpty() && age.isNotEmpty() && phone.isNotEmpty())
     }
 }
