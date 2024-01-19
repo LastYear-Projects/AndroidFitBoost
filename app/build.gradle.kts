@@ -79,4 +79,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation("com.google.firebase:firebase-storage")
+
+    implementation ("com.squareup.picasso:picasso:2.8")
+
 }

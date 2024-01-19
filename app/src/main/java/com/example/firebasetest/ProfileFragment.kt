@@ -1,4 +1,6 @@
 import android.content.Intent
+import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -7,15 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
+import com.example.firebasetest.R
 import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
 import com.example.firebasetest.user.model.RoomUser
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.squareup.picasso.Picasso
+import java.util.*
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -24,7 +32,8 @@ class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
-
+    private var imageUri: Uri? = null
+    private lateinit var storageReference: StorageReference
 
     private var isEditMode = false
     private lateinit var mUserViewModel: RoomUserViewModel
@@ -40,6 +49,7 @@ class ProfileFragment : Fragment() {
         imageView = binding.imageView
         firestore = FirebaseFirestore.getInstance()
         mUserViewModel = ViewModelProvider(this).get(RoomUserViewModel::class.java)
+        storageReference = FirebaseStorage.getInstance().reference
 
         auth = FirebaseAuth.getInstance()
 
@@ -71,9 +81,11 @@ class ProfileFragment : Fragment() {
 
         binding.btnCancel.setOnClickListener {
             // Handle Cancel button click
+            binding.btnEdit.visibility = View.GONE
             fetchDataAndPopulateUI()
             toggleEditMode()
             Toast.makeText(requireContext(), "Cancel...", Toast.LENGTH_SHORT).show()
+            binding.btnEdit.visibility = View.VISIBLE
         }
 
         binding.btnResetPassword.setOnClickListener {
@@ -98,7 +110,8 @@ class ProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == -1){
-            imageView.setImageURI(data?.data)
+            imageUri = data?.data
+            imageView.setImageURI(imageUri)
         }
     }
 
@@ -154,7 +167,7 @@ class ProfileFragment : Fragment() {
 
 
         // Fetch the current user data from the ViewModel
-        mUserViewModel.getCurrentUserLiveData().observe(viewLifecycleOwner, { currentUser ->
+        mUserViewModel.getCurrentUserLiveData().observe(viewLifecycleOwner) { currentUser ->
             // Update UI with the current user's data
             binding.tvProfileName.text = createEditable(currentUser.fullName)
             binding.tvProfilePhone.text = createEditable(currentUser.phone)
@@ -163,11 +176,40 @@ class ProfileFragment : Fragment() {
             binding.tvProfileHeight.text = createEditable(currentUser.height)
             binding.tvProfileGender.text = createEditable(currentUser.gender)
             binding.tvProfileAge.text = createEditable(currentUser.age)
-            binding.loader.visibility = View.GONE
-            checkVisible()
-        })
+
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                val userId = currentUser.uid
+                // Construct the storage reference for the user's image
+                val imageReference = FirebaseStorage.getInstance().getReference("images/$userId.jpg")
+
+                imageReference.downloadUrl.addOnSuccessListener { imageUrl ->
+                    // Image URL obtained successfully, download and set the image
+                    Picasso.get().load(imageUrl).into(binding.imageView)
+                    binding.loader.visibility = View.GONE
+                    checkVisible()
+                }.addOnFailureListener { e ->
+                    // Image URL retrieval failed
+                    Log.e("ProfileFragment", "Error fetching image URL: ${e.message}")
+                    // You can optionally set a default image or leave the ImageView empty
+                    // Here, we are setting a placeholder drawable
+                    binding.imageView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.baseline_person_24
+                        )
+                    )
+                }
+            }
+
+
+        }
 
     }
+//    private fun downloadAndSetImage(imageUrl: String) {
+//        Log.d("ProfileFragment", "Downloading image from: $imageUrl")
+//        Picasso.get().load(imageUrl).into(binding.imageView)
+//    }
 
     private fun disableEditModeFirst(){
         binding.tvProfileName.isEnabled = false
@@ -240,9 +282,39 @@ class ProfileFragment : Fragment() {
                 updateFirestoreUser()
             }
 
+            uploadImageToFirebaseStorage()
             Toast.makeText(requireContext(),"Updated Successfully!", Toast.LENGTH_SHORT).show()
         }else{
             Toast.makeText(requireContext(),"Cancel...", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun uploadImageToFirebaseStorage() {
+        if (imageUri != null) {
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                val userId = currentUser.uid
+                val imageName = "$userId.jpg"
+                val imageReference = storageReference.child("images/$imageName")
+
+                imageReference.putFile(imageUri!!)
+                    .addOnSuccessListener {
+                        // Image upload success
+                        Toast.makeText(
+                            requireContext(),
+                            "Image uploaded successfully!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    .addOnFailureListener { e ->
+                        // Image upload failed
+                        Toast.makeText(
+                            requireContext(),
+                            "Image upload failed: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            }
         }
     }
 
