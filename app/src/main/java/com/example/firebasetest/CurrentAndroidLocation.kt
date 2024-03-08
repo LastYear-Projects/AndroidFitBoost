@@ -9,6 +9,8 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -20,6 +22,7 @@ class CurrentAndroidLocation : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var tvLatitude: TextView
     private lateinit var tvLongitude: TextView
+    private lateinit var loader: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,7 @@ class CurrentAndroidLocation : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         tvLatitude = findViewById(R.id.tv_latitude)
         tvLongitude = findViewById(R.id.tv_longitude)
+        loader = findViewById(R.id.mapLoader)
 
         getCurrentLocation()
     }
@@ -61,6 +65,7 @@ class CurrentAndroidLocation : AppCompatActivity() {
                             intent.putExtra("latitude", location.latitude)
                             intent.putExtra("longitude", location.longitude)
                             startActivity(intent)
+                            finish()
                         }
                     }
                 }
