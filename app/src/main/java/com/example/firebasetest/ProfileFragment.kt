@@ -178,16 +178,18 @@ class ProfileFragment : Fragment() {
             binding.tvProfileAge.text = createEditable(currentUser.age)
 
             val currentUser = auth.currentUser
+            Log.e("ProfileFragment", "Before")
             if (currentUser != null) {
                 val userId = currentUser.uid
+                Log.e("ProfileFragment", "After")
                 // Construct the storage reference for the user's image
                 val imageReference = FirebaseStorage.getInstance().getReference("images/$userId.jpg")
-
+                binding.loader.visibility = View.GONE
+                checkVisible()
                 imageReference.downloadUrl.addOnSuccessListener { imageUrl ->
                     // Image URL obtained successfully, download and set the image
                     Picasso.get().load(imageUrl).into(binding.imageView)
-                    binding.loader.visibility = View.GONE
-                    checkVisible()
+
                 }.addOnFailureListener { e ->
                     // Image URL retrieval failed
                     Log.e("ProfileFragment", "Error fetching image URL: ${e.message}")
