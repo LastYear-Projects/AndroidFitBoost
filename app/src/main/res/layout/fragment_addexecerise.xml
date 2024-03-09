@@ -52,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Workout name"
+            android:selectAllOnFocus="true"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,28 +117,26 @@
         android:id="@+id/btnAddExercises"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#090909"
         android:text="+ Add Exercises"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintBottom_toTopOf="@id/imgSavePic"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:text="Workout"
+        android:text="Exercises (0)"
         android:textColor="#191919"
         android:textSize="16sp"
         android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/execeriseRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdvanced" />
 
@@ -158,31 +157,28 @@
         app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgSave"
-        android:layout_width="184dp"
-        android:layout_height="118dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/baseline_photo_camera_24"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddExercises"
-        app:layout_constraintVertical_bias="1.0" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/execeriseRecyclerView"
         android:layout_width="411dp"
-        android:layout_height="101dp"
+        android:layout_height="129dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/btnAddExercises"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintVertical_bias="0.666" />
+
+    <ImageView
+        android:id="@+id/imgSavePic"
+        android:layout_width="146dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="133dp"
+        android:src="@drawable/baseline_photo_camera_24"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
