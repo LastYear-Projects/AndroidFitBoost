@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
+import com.example.firebasetest.MyWorkoutsActivity
 import com.example.firebasetest.R
 import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
@@ -78,6 +79,12 @@ class ProfileFragment : Fragment() {
             saveDataAndUpdateUI()
             toggleEditMode()
         }
+
+        binding.btnMyWorkouts.setOnClickListener {
+            val intent = Intent(activity, MyWorkoutsActivity::class.java)
+            startActivity(intent)
+        }
+
 
         binding.btnCancel.setOnClickListener {
             // Handle Cancel button click
