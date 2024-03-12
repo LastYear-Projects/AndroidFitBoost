@@ -2,7 +2,6 @@ package com.example.firebasetest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
@@ -13,7 +12,7 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
 
-        val gym = intent.getParcelableExtra<Gym>("gym")
+        val gym = intent.getParcelableExtra<Workout>("gym")
         if(gym != null){
             val textView: TextView = findViewById(R.id.detailedActivityTv)
             val imageView: ImageView = findViewById(R.id.detailedActivityIv)
