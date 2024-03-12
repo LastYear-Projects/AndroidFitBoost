@@ -3,7 +3,7 @@ package com.example.firebasetest
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Gym(val image: String, val name: String, val subtitle: String) : Parcelable {
+data class Workout(val image: String, val name: String, val subtitle: String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,
@@ -20,12 +20,12 @@ data class Gym(val image: String, val name: String, val subtitle: String) : Parc
         dest.writeString(subtitle)
     }
 
-    companion object CREATOR : Parcelable.Creator<Gym> {
-        override fun createFromParcel(parcel: Parcel): Gym {
-            return Gym(parcel)
+    companion object CREATOR : Parcelable.Creator<Workout> {
+        override fun createFromParcel(parcel: Parcel): Workout {
+            return Workout(parcel)
         }
 
-        override fun newArray(size: Int): Array<Gym?> {
+        override fun newArray(size: Int): Array<Workout?> {
             return arrayOfNulls(size)
         }
     }
