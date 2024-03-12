@@ -3,8 +3,9 @@ package com.example.firebasetest
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Gym(val image: String, val name: String) : Parcelable {
+data class Gym(val image: String, val name: String, val subtitle: String) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!
     )
@@ -16,6 +17,7 @@ data class Gym(val image: String, val name: String) : Parcelable {
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(image)
         dest.writeString(name)
+        dest.writeString(subtitle)
     }
 
     companion object CREATOR : Parcelable.Creator<Gym> {

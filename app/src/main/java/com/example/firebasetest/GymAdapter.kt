@@ -16,6 +16,7 @@ class GymAdapter(private val gymList: ArrayList<Gym>)
     class GymViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.homePageImageView)
         val textView: TextView = itemView.findViewById(R.id.homePageTextView)
+        val subtitleView: TextView = itemView.findViewById(R.id.homePageSubTitleTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GymViewHolder {
@@ -30,6 +31,7 @@ class GymAdapter(private val gymList: ArrayList<Gym>)
             .load(gym.image)
             .into(holder.imageView)
         holder.textView.text = gym.name
+        holder.subtitleView.text = gym.subtitle
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(gym)

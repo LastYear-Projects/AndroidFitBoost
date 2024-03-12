@@ -60,9 +60,11 @@ class HomeFragment : Fragment() {
                 for (document in result) {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
+                    val subtitle = document.getString("subtitle") ?: ""
                     Log.e("HomeFragment", title)
                     Log.e("HomeFragment", imageUrl)
-                    gymList.add(Gym(imageUrl, title))
+                    Log.e("HomeFragment", subtitle)
+                    gymList.add(Gym(imageUrl, title, subtitle))
                 }
                 gymAdapter.notifyDataSetChanged()
                 loaderView.visibility = View.GONE
