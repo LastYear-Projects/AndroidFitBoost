@@ -17,8 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Firebasetest"
-
         tools:targetApi="31">
+
         <activity
             android:name=".user.RoomMainActivity"
             android:exported="true" >
@@ -46,11 +46,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity
-            android:name=".MyWorkoutsActivity"
-            android:exported="true"
-            >
-        </activity>
+
         <activity
             android:name=".MainFragmentActivity"
             android:exported="true">
@@ -89,6 +85,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+<!--        <activity-->
+<!--            android:name=".MyWorkoutsActivity"-->
+<!--            android:exported="true"-->
+<!--            >-->
+<!--        </activity>-->
         <activity
             android:name=".HomePageActivity"
             android:exported="false" />
