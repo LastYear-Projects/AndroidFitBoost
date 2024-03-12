@@ -392,6 +392,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:text="My Workouts"
         android:textColor="@color/black"
@@ -399,7 +400,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
 
     <Button
         android:id="@+id/btnEdit"
@@ -413,54 +415,45 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnResetPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMyWorkouts" />
 
     <Button
         android:id="@+id/btnSave"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="Save"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.693"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnCancel"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="Cancel"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnResetPassword"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:text="Reset Password"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
