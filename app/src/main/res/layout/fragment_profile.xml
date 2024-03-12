@@ -57,18 +57,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvProfileName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Your Full Name"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.098"-->
-<!--    app:layout_constraintStart_toEndOf="@+id/textView16"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvProfileName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:text="Your Full Name"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.098"-->
+    <!--    app:layout_constraintStart_toEndOf="@+id/textView16"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
     <EditText
         android:id="@+id/tvProfileName"
@@ -86,17 +86,17 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <!--    <TextView-->
-<!--        android:id="@+id/tvProfilePhone"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Your Phone Number"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.2"-->
-<!--    app:layout_constraintStart_toEndOf="@+id/textView20"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />-->
+    <!--        android:id="@+id/tvProfilePhone"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:text="Your Phone Number"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.2"-->
+    <!--    app:layout_constraintStart_toEndOf="@+id/textView20"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />-->
 
     <TextView
         android:id="@+id/textView20"
@@ -140,31 +140,31 @@
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <!--    <TextView-->
-<!--        android:id="@+id/tvProfileEmail"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:text="Your Email"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.208"-->
-<!--    app:layout_constraintStart_toEndOf="@+id/textView22"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/tvProfilePhone" />-->
+    <!--        android:id="@+id/tvProfileEmail"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="12dp"-->
+    <!--        android:text="Your Email"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.208"-->
+    <!--    app:layout_constraintStart_toEndOf="@+id/textView22"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/tvProfilePhone" />-->
 
 
     <!--    <TextView-->
-<!--        android:id="@+id/tvProfileHeight"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:text="Your Height"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.13"-->
-<!--    app:layout_constraintStart_toStartOf="parent"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/textView27" />-->
+    <!--        android:id="@+id/tvProfileHeight"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="12dp"-->
+    <!--        android:text="Your Height"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.13"-->
+    <!--    app:layout_constraintStart_toStartOf="parent"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/textView27" />-->
 
 
     <EditText
@@ -250,18 +250,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileWeight" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvProfileWeight"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Your Weight"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.122"-->
-<!--    app:layout_constraintStart_toStartOf="parent"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/textView24" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvProfileWeight"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:text="Your Weight"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.122"-->
+    <!--    app:layout_constraintStart_toStartOf="parent"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/textView24" />-->
 
     <EditText
         android:id="@+id/tvProfileWeight"
@@ -279,6 +279,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -291,14 +292,14 @@
 
         <Button
             android:id="@+id/btnKG"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_weight="1"
             android:layout_marginEnd="5dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="KG"
+            android:layout_weight="1"
             android:backgroundTint="#FFFFFF"
+            android:text="KG"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
     </LinearLayout>
@@ -316,32 +317,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileHeight" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvProfileGender"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="44dp"-->
-<!--        android:text="Your Gender"-->
-<!--    android:textColor="#191919"-->
-<!--    android:textSize="16sp"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintHorizontal_bias="0.18"-->
-<!--    app:layout_constraintStart_toEndOf="@+id/textView26"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/tvProfileHeight" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvProfileGender"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="44dp"-->
+    <!--        android:text="Your Gender"-->
+    <!--    android:textColor="#191919"-->
+    <!--    android:textSize="16sp"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintHorizontal_bias="0.18"-->
+    <!--    app:layout_constraintStart_toEndOf="@+id/textView26"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/tvProfileHeight" />-->
 
 
     <!--    <TextView-->
-<!--        android:id="@+id/tvProfileAge"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:text="Your Age"-->
-<!--        android:textColor="#191919"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.162"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/textView29"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
+    <!--        android:id="@+id/tvProfileAge"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:text="Your Age"-->
+    <!--        android:textColor="#191919"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.162"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/textView29"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
 
     <EditText
         android:id="@+id/tvProfileGender"
@@ -387,51 +388,64 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/btnMyWorkouts"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"
+        android:text="My Workouts"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEdit"
         style="?attr/materialButtonOutlinedStyle"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Edit"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnResetPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSave"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Save"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16dp"
-        style="?attr/materialButtonOutlinedStyle"
+        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.693"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
 
     <Button
         android:id="@+id/btnCancel"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Cancel"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16dp"
-        style="?attr/materialButtonOutlinedStyle"
+        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileAge" />
 
     <Button
         android:id="@+id/btnResetPassword"
@@ -441,8 +455,8 @@
         android:layout_marginBottom="8dp"
         android:text="Reset Password"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"

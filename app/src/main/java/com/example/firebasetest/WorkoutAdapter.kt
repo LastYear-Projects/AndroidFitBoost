@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class GymAdapter(private val gymList: ArrayList<Gym>)
-    : RecyclerView.Adapter<GymAdapter.GymViewHolder>() {
+class WorkoutAdapter(private val gymList: ArrayList<Workout>)
+    : RecyclerView.Adapter<WorkoutAdapter.GymViewHolder>() {
 
-        var onItemClick: ((Gym) -> Unit)? = null
+        var onItemClick: ((Workout) -> Unit)? = null
 
     class GymViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.homePageImageView)
