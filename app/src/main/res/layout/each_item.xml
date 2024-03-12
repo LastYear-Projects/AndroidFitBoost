@@ -44,6 +44,7 @@
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />
                 <TextView
+                    android:id="@+id/homePageSubTitleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -51,32 +52,11 @@
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Paragraph"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
 
             </LinearLayout>
 
             <!-- Buttons -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="Add To Favorite"
-                    android:textColor="@color/black"
-                    style="?attr/materialButtonOutlinedStyle"
-                    />
-            </LinearLayout>
+
 
         </LinearLayout>
 
