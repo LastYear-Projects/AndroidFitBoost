@@ -34,39 +34,7 @@ class MyWorkoutsActivity : AppCompatActivity() {
         workoutList = ArrayList()
         workoutAdapter = WorkoutAdapter(workoutList)
         fetchMyWorkouts();
-
-
-
     }
-
-
-
-
-//        loaderView = view.findViewById(R.id.loader)
-//        recyclerView = view.findViewById(R.id.homeRecyclerView)
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.layoutManager = LinearLayoutManager(activity)
-//
-//        workoutList = ArrayList()
-//        // TODO -> fetch all the exercises from the DB and add to the gymList
-//        fetchExercises();
-//
-//        loaderView.visibility = View.GONE
-//
-////        gymList.add(Gym(R.drawable.first, "Your First Workout"))
-////        gymList.add(Gym(R.drawable.second, "Your Second Workout"))
-////        gymList.add(Gym(R.drawable.third, "Your Third Workout"))
-//
-//        workoutAdapter = WorkoutAdapter(workoutList)
-//        recyclerView.adapter = workoutAdapter
-//
-//        workoutAdapter.onItemClick = {
-//            val intent = Intent(activity, DetailsActivity::class.java)
-//            intent.putExtra("gym", it)
-//            startActivity(intent)
-//        }
-//        return view
-//    }
 
     private fun fetchMyWorkouts() {
         val currentUser = auth.currentUser

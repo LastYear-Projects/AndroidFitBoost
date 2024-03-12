@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         workoutList = ArrayList()
         // TODO -> fetch all the exercises from the DB and add to the gymList
         fetchExercises();
-        workoutAdapter.notifyDataSetChanged()
+
         loaderView.visibility = View.GONE
 
 //        gymList.add(Gym(R.drawable.first, "Your First Workout"))
@@ -64,6 +64,7 @@ class HomeFragment : Fragment() {
                     val subtitle = document.getString("subtitle") ?: ""
                     workoutList.add(Workout(imageUrl, title, subtitle))
                 }
+                workoutAdapter.notifyDataSetChanged()
 
             }
             .addOnFailureListener { exception ->

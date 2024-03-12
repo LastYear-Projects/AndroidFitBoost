@@ -144,6 +144,7 @@ class ProfileFragment : Fragment() {
             binding.btnCM.visibility = View.GONE
             binding.btnKG.visibility = View.GONE
             binding.btnEdit.visibility = View.GONE
+            binding.btnMyWorkouts.visibility = View.GONE
         }else{
             binding.tvProfileName.visibility = View.VISIBLE
             binding.tvProfilePhone.visibility = View.VISIBLE
@@ -165,6 +166,7 @@ class ProfileFragment : Fragment() {
             binding.btnCM.visibility = View.VISIBLE
             binding.btnKG.visibility = View.VISIBLE
             binding.btnEdit.visibility = View.VISIBLE
+            binding.btnMyWorkouts.visibility = View.VISIBLE
         }
     }
 
