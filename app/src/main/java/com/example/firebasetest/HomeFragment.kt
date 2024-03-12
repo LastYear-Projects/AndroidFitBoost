@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var gymList: ArrayList<Gym>
-    private lateinit var gymAdapter: GymAdapter
+    private lateinit var workoutList: ArrayList<Workout>
+    private lateinit var workoutAdapter: WorkoutAdapter
 
     private lateinit var loaderView : ProgressBar
 
@@ -32,17 +32,17 @@ class HomeFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        gymList = ArrayList()
+        workoutList = ArrayList()
         // TODO -> fetch all the exercises from the DB and add to the gymList
         fetchExercises()
 //        gymList.add(Gym(R.drawable.first, "Your First Workout"))
 //        gymList.add(Gym(R.drawable.second, "Your Second Workout"))
 //        gymList.add(Gym(R.drawable.third, "Your Third Workout"))
 
-        gymAdapter = GymAdapter(gymList)
-        recyclerView.adapter = gymAdapter
+        workoutAdapter = WorkoutAdapter(workoutList)
+        recyclerView.adapter = workoutAdapter
 
-        gymAdapter.onItemClick = {
+        workoutAdapter.onItemClick = {
             val intent = Intent(activity, DetailsActivity::class.java)
             intent.putExtra("gym", it)
             startActivity(intent)
@@ -58,9 +58,9 @@ class HomeFragment : Fragment() {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
                     val subtitle = document.getString("subtitle") ?: ""
-                    gymList.add(Gym(imageUrl, title, subtitle))
+                    workoutList.add(Workout(imageUrl, title, subtitle))
                 }
-                gymAdapter.notifyDataSetChanged()
+                workoutAdapter.notifyDataSetChanged()
                 loaderView.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
