@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class GymAdapter(private val gymList: ArrayList<Gym>)
     : RecyclerView.Adapter<GymAdapter.GymViewHolder>() {
@@ -24,7 +25,10 @@ class GymAdapter(private val gymList: ArrayList<Gym>)
 
     override fun onBindViewHolder(holder: GymViewHolder, position: Int) {
         val gym = gymList[position]
-        holder.imageView.setImageResource(gym.image)
+        // Load image using Picasso library
+        Picasso.get()
+            .load(gym.image)
+            .into(holder.imageView)
         holder.textView.text = gym.name
 
         holder.itemView.setOnClickListener {
