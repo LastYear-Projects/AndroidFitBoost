@@ -17,11 +17,13 @@ class DetailsActivity : AppCompatActivity() {
         if(gym != null){
             val textView: TextView = findViewById(R.id.detailedActivityTv)
             val imageView: ImageView = findViewById(R.id.detailedActivityIv)
-            Log.e("Details", gym.name)
-            Log.e("Details", gym.image)
-            Log.e("Details", gym.subtitle)
             textView.text = gym.name
             Picasso.get().load(gym.image).into(imageView)
         }
     }
 }
+
+/*
+Example to log:
+            Log.e("Details", gym.name)
+ */

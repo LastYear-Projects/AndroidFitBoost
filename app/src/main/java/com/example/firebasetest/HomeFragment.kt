@@ -34,9 +34,7 @@ class HomeFragment : Fragment() {
 
         gymList = ArrayList()
         // TODO -> fetch all the exercises from the DB and add to the gymList
-        Log.e("HomeFragment", "1111")
         fetchExercises()
-        Log.e("HomeFragment", "22222")
 //        gymList.add(Gym(R.drawable.first, "Your First Workout"))
 //        gymList.add(Gym(R.drawable.second, "Your Second Workout"))
 //        gymList.add(Gym(R.drawable.third, "Your Third Workout"))
@@ -53,7 +51,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchExercises() {
-        Log.e("HomeFragment", "HERE")
         firestore.collection("exercise")
             .get()
             .addOnSuccessListener { result ->
@@ -61,9 +58,6 @@ class HomeFragment : Fragment() {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
                     val subtitle = document.getString("subtitle") ?: ""
-                    Log.e("HomeFragment", title)
-                    Log.e("HomeFragment", imageUrl)
-                    Log.e("HomeFragment", subtitle)
                     gymList.add(Gym(imageUrl, title, subtitle))
                 }
                 gymAdapter.notifyDataSetChanged()
@@ -74,3 +68,4 @@ class HomeFragment : Fragment() {
             }
     }
 }
+
