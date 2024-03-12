@@ -68,7 +68,7 @@
             android:id="@+id/phoneEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your Phone Number"
+            android:hint="Enter your Phone Number"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +89,7 @@
             android:id="@+id/fullNameEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your Full Name"
+            android:hint="Enter your Full Name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +110,7 @@
             android:id="@+id/emailEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your Email"
+            android:hint="Enter your Email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +132,7 @@
             android:id="@+id/passET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type Your Password"
+            android:hint="Enter Your Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +154,7 @@
             android:id="@+id/confirmPassEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Retype Your Password"
+            android:hint="Reenter Your Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -173,18 +173,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ageLayout" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already Registered , Sign In !"
-        android:textColor="#191919"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already Registered? Sign In!"
+            android:textColor="#191919"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
         android:id="@+id/textView2"
@@ -307,7 +307,7 @@
                 android:id="@+id/weightEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Weight"
+                android:hint="Enter Your Weight"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -327,7 +327,7 @@
                 android:id="@+id/heightEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Height"
+                android:hint="Enter Your Height"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -347,7 +347,7 @@
                 android:id="@+id/genderEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Gender"
+                android:hint="Enter Your Gender"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -367,7 +367,7 @@
                 android:id="@+id/ageEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Age"
+                android:hint="Enter Your Age"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
