@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,10 @@ class HomeFragment : Fragment() {
 
         workoutList = ArrayList()
         // TODO -> fetch all the exercises from the DB and add to the gymList
-        fetchExercises()
+        fetchExercises();
+        workoutAdapter.notifyDataSetChanged()
+        loaderView.visibility = View.GONE
+
 //        gymList.add(Gym(R.drawable.first, "Your First Workout"))
 //        gymList.add(Gym(R.drawable.second, "Your Second Workout"))
 //        gymList.add(Gym(R.drawable.third, "Your Third Workout"))
@@ -60,11 +64,15 @@ class HomeFragment : Fragment() {
                     val subtitle = document.getString("subtitle") ?: ""
                     workoutList.add(Workout(imageUrl, title, subtitle))
                 }
-                workoutAdapter.notifyDataSetChanged()
-                loaderView.visibility = View.GONE
+
             }
             .addOnFailureListener { exception ->
                 Log.e("HomeFragment", "error: ${exception.message.toString()}")
+                Toast.makeText(
+                    activity,
+                    "error: ${exception.message.toString()}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 }
