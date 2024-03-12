@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
+import com.example.firebasetest.MyWorkoutsActivity
 import com.example.firebasetest.R
 import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
@@ -79,6 +80,12 @@ class ProfileFragment : Fragment() {
             toggleEditMode()
         }
 
+        binding.btnMyWorkouts.setOnClickListener {
+            val intent = Intent(activity, MyWorkoutsActivity::class.java)
+            startActivity(intent)
+        }
+
+
         binding.btnCancel.setOnClickListener {
             // Handle Cancel button click
             binding.btnEdit.visibility = View.GONE
@@ -137,6 +144,7 @@ class ProfileFragment : Fragment() {
             binding.btnCM.visibility = View.GONE
             binding.btnKG.visibility = View.GONE
             binding.btnEdit.visibility = View.GONE
+            binding.btnMyWorkouts.visibility = View.GONE
         }else{
             binding.tvProfileName.visibility = View.VISIBLE
             binding.tvProfilePhone.visibility = View.VISIBLE
@@ -158,6 +166,7 @@ class ProfileFragment : Fragment() {
             binding.btnCM.visibility = View.VISIBLE
             binding.btnKG.visibility = View.VISIBLE
             binding.btnEdit.visibility = View.VISIBLE
+            binding.btnMyWorkouts.visibility = View.VISIBLE
         }
     }
 

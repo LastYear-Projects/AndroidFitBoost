@@ -8,24 +8,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class GymAdapter(private val gymList: ArrayList<Gym>)
-    : RecyclerView.Adapter<GymAdapter.GymViewHolder>() {
+class WorkoutAdapter(private val workoutList: ArrayList<Workout>)
+    : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
-        var onItemClick: ((Gym) -> Unit)? = null
+        var onItemClick: ((Workout) -> Unit)? = null
 
-    class GymViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class WorkoutViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.homePageImageView)
         val textView: TextView = itemView.findViewById(R.id.homePageTextView)
         val subtitleView: TextView = itemView.findViewById(R.id.homePageSubTitleTextView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GymViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.each_item, parent, false)
-        return GymViewHolder(view)
+        return WorkoutViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: GymViewHolder, position: Int) {
-        val gym = gymList[position]
+    override fun onBindViewHolder(holder: WorkoutViewHolder, position: Int) {
+        val gym = workoutList[position]
         // Load image using Picasso library
         Picasso.get()
             .load(gym.image)
@@ -39,7 +39,7 @@ class GymAdapter(private val gymList: ArrayList<Gym>)
     }
 
     override fun getItemCount(): Int {
-        return gymList.size
+        return workoutList.size
     }
 
 
