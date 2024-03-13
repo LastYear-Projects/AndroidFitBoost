@@ -1,13 +1,8 @@
 package com.example.firebasetest
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,7 +43,10 @@ class MyWorkoutsActivity : AppCompatActivity() {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
                     val subtitle = document.getString("subtitle") ?: ""
-                    workoutList.add(Workout(imageUrl, title, subtitle))
+                    val duration = document.getString("duration") ?: ""
+                    val owner = document.getString("owner") ?: ""
+                    val exercises = document.get("exercises") as ArrayList<*>
+                    workoutList.add(Workout(imageUrl, title, subtitle,duration,owner,exercises as ArrayList<*>))
                 }
                 Log.e("myWorkOuts", workoutList.toString())
                 recyclerView.adapter = WorkoutAdapter(workoutList);
