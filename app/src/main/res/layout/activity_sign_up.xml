@@ -159,7 +159,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_createWorkout"
+        android:id="@+id/btn_SingUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -184,7 +184,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_createWorkout" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_SingUp" />
 
     <TextView
         android:id="@+id/textView2"
