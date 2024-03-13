@@ -32,7 +32,7 @@ class HomeFragment2Activity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
-                R.id.exercise -> replaceFragment(AddExerciseFragment())
+                R.id.exercise -> replaceFragment(AddWorkoutFragment())
 //                R.id.favorite -> replaceFragment(FavoriteFragment())
                 R.id.map -> {
                     val intent = Intent(this, CurrentAndroidLocation::class.java)
