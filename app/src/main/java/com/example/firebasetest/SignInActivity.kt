@@ -24,7 +24,7 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener{
+        binding.btnSingIn.setOnClickListener{
             val email = binding.emailEt.text.toString()
             val password = binding.passET.text.toString()
 
