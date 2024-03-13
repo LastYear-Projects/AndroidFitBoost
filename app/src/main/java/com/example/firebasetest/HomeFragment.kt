@@ -34,14 +34,11 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
         workoutList = ArrayList()
-        // TODO -> fetch all the exercises from the DB and add to the gymList
+
         fetchExercises();
 
         loaderView.visibility = View.GONE
 
-//        gymList.add(Gym(R.drawable.first, "Your First Workout"))
-//        gymList.add(Gym(R.drawable.second, "Your Second Workout"))
-//        gymList.add(Gym(R.drawable.third, "Your Third Workout"))
 
         workoutAdapter = WorkoutAdapter(workoutList)
         recyclerView.adapter = workoutAdapter
