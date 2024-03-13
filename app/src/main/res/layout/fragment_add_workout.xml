@@ -58,10 +58,10 @@
 
     <TextView
         android:id="@+id/textView14"
+        android:text="Choose Fitness Duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Choose Fitness Level"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/workout" />
 
     <Button
-        android:id="@+id/btnBeginner"
+        android:id="@+id/btn_ShortWorkout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -77,14 +77,14 @@
         android:layout_marginEnd="12dp"
         android:backgroundTint="#090909"
         android:textColor="#FFFFFF"
-        android:text="Beginner"
+        android:text="0-30 min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <Button
-        android:id="@+id/btnIntermediate"
+        android:id="@+id/btn_medium_workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -92,14 +92,14 @@
         android:layout_marginEnd="12dp"
         android:backgroundTint="#090909"
         android:textColor="#FFFFFF"
-        android:text="Intermediate"
+        android:text="30-55 min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBeginner" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ShortWorkout" />
 
     <Button
-        android:id="@+id/btnAdvanced"
+        android:id="@+id/btn_long_workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -107,22 +107,12 @@
         android:layout_marginEnd="12dp"
         android:backgroundTint="#090909"
         android:textColor="#FFFFFF"
-        android:text="Advanced"
+        android:text="55+ min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIntermediate" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_medium_workout" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddExercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#090909"
-        android:text="+ Add Exercises"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/imgSavePic"
-        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/textView15"
@@ -138,14 +128,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdvanced" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_long_workout" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_createWorkout"
+        android:id="@+id/btnAddExercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#090909"
+        android:text="+ Add Exercises"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="528dp" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Add picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddExercises" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_PictureUrl"
+        android:layout_width="376dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:hint="Enter picture url"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_CreateWorkout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="11dp"
         android:layout_marginBottom="16dp"
         android:background="@color/yellow"
         android:text="Create Workout"
@@ -155,7 +180,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_PictureUrl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/execeriseRecyclerView"
@@ -168,17 +194,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:layout_constraintVertical_bias="0.666" />
-
-    <ImageView
-        android:id="@+id/imgSavePic"
-        android:layout_width="146dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="133dp"
-        android:src="@drawable/baseline_photo_camera_24"
-        app:layout_constraintBottom_toTopOf="@+id/btn_createWorkout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
