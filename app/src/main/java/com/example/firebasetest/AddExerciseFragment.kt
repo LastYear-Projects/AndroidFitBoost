@@ -9,22 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
-import com.example.firebasetest.databinding.FragmentAddexeceriseBinding
-import com.example.firebasetest.databinding.FragmentFavoriteBinding
-import com.example.firebasetest.databinding.FragmentHomeBinding
+import com.example.firebasetest.databinding.FragmentAddWorkoutBinding
 import com.example.firebasetest.databinding.FragmentModalNewExerciseBinding
 
 
-class AddExerciseFragment : Fragment() {
-    private lateinit var binding: FragmentAddexeceriseBinding
+class AddWorkoutFragment : Fragment() {
+    private lateinit var binding: FragmentAddWorkoutBinding
     private lateinit var bindingTest: FragmentModalNewExerciseBinding
-    private lateinit var imageView: ImageView
+    private lateinit var imageUrl: String
     private lateinit var customDialog: AlertDialog
 
     private lateinit var execeriseList: ArrayList<Execerise>
@@ -32,28 +28,23 @@ class AddExerciseFragment : Fragment() {
     private lateinit var ExeceriseRecyclerView: RecyclerView
     private lateinit var titleTextView: TextView
 
-    companion object{
-        val IMAGE_REQUEST_CODE = 100
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_addexecerise, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_workout, container, false)
 
-        binding = FragmentAddexeceriseBinding.inflate(inflater, container, false)
+        binding = FragmentAddWorkoutBinding.inflate(inflater, container, false)
         bindingTest = FragmentModalNewExerciseBinding.inflate(inflater, container, false)
-        imageView = binding.imgSavePic
+        imageUrl = binding.tiPictureUrl.toString()
         titleTextView = binding.textView15
 
         binding.execeriseRecyclerView.setHasFixedSize(true)
         binding.execeriseRecyclerView.layoutManager = LinearLayoutManager(activity)
 
         execeriseList = ArrayList()
-//        execeriseList.add(Execerise("First", "5","3"))
-//        execeriseList.add(Execerise("Second", "5","3"))
-//        execeriseList.add(Execerise("Third", "5","3"))
 
         ExeceriseRecyclerView = binding.execeriseRecyclerView
         ExeceriseRecyclerView.setHasFixedSize(true)
@@ -66,19 +57,16 @@ class AddExerciseFragment : Fragment() {
         binding.execeriseRecyclerView.adapter = execeriseAdapter
 
 
-        imageView.setOnClickListener {
-            pickImageGallery()
-        }
 
-        binding.btnBeginner.setOnClickListener {
+        binding.btnShortWorkout.setOnClickListener {
             resetButtonColors()
             it.setBackgroundColor(Color.GRAY)
         }
-        binding.btnIntermediate.setOnClickListener {
+        binding.btnMediumWorkout.setOnClickListener {
             resetButtonColors()
             it.setBackgroundColor(Color.GRAY)
         }
-        binding.btnAdvanced.setOnClickListener {
+        binding.btnLongWorkout.setOnClickListener {
             resetButtonColors()
             it.setBackgroundColor(Color.GRAY)
         }
@@ -94,24 +82,24 @@ class AddExerciseFragment : Fragment() {
         titleTextView.text = title
     }
 
-    private fun pickImageGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, FavoriteFragment.IMAGE_REQUEST_CODE)
-    }
+//    private fun pickImageGallery() {
+//        val intent = Intent(Intent.ACTION_PICK)
+//        intent.type = "image/*"
+//        startActivityForResult(intent, FavoriteFragment.IMAGE_REQUEST_CODE)
+//    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        println("result code: $resultCode" )
-        if(resultCode == -1){
-            imageView.setImageURI(data?.data)
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        println("result code: $resultCode" )
+//        if(resultCode == -1){
+//            imageUrl.text = data?.data.toString()
+//        }
+//    }
 
     private fun resetButtonColors() {
-        binding.btnBeginner.setBackgroundColor(Color.BLACK)
-        binding.btnIntermediate.setBackgroundColor(Color.BLACK)
-        binding.btnAdvanced.setBackgroundColor(Color.BLACK)
+        binding.btnShortWorkout.setBackgroundColor(Color.BLACK)
+        binding.btnMediumWorkout.setBackgroundColor(Color.BLACK)
+        binding.btnLongWorkout.setBackgroundColor(Color.BLACK)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -141,6 +129,7 @@ class AddExerciseFragment : Fragment() {
             // Add the new exercise to the list
             execeriseList.add(newExercise)
             updateTitleWithExercisesCount()
+
 
 
             // Notify the adapter about the data change
