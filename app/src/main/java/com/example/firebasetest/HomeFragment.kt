@@ -62,7 +62,10 @@ class HomeFragment : Fragment() {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
                     val subtitle = document.getString("subtitle") ?: ""
-                    workoutList.add(Workout(imageUrl, title, subtitle))
+                    val duration = document.getString("duration") ?: ""
+                    val owner = document.getString("owner") ?: ""
+                    val exercises = document.get("exercises") as ArrayList<*>
+                    workoutList.add(Workout(imageUrl, title, subtitle, duration, owner, exercises as ArrayList<*>))
                 }
                 workoutAdapter.notifyDataSetChanged()
 
