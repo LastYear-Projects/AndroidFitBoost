@@ -32,7 +32,7 @@
         android:id="@+id/exerciseFragment"
         android:name="com.example.firebasetest.AddExerciseFragment"
         android:label="fragment_execerise"
-        tools:layout="@layout/fragment_addexecerise" />
+        tools:layout="@layout/fragment_add_workout" />
     <fragment
         android:id="@+id/mealPlansFragment"
         android:name="com.example.firebasetest.FavoriteFragment"
