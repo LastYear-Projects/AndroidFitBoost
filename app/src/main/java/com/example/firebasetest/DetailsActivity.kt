@@ -9,18 +9,30 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginTop
 import androidx.core.view.setMargins
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
+
 class DetailsActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
+
+    private lateinit var exerciseRecyclerView: RecyclerView
+    private lateinit var exerciseAdapter: ExerciseInWorkOutAdapter
+    private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
 
         val gym = intent.getParcelableExtra<Workout>("gym")
+        exerciseRecyclerView = findViewById(R.id.exerciseRecyclerView)
+//        exerciseAdapter = ExerciseInWorkOutAdapter(emptyList()) // Initialize with an empty list
+        exercisesList = ArrayList()
+//        exerciseRecyclerView.adapter = exerciseAdapter
+        exerciseRecyclerView.layoutManager = LinearLayoutManager(this)
 
         firestore = FirebaseFirestore.getInstance()
 
@@ -55,34 +67,44 @@ class DetailsActivity : AppCompatActivity() {
                     val subtitleTv = findViewById<TextView>(R.id.subtitleTv)
                     subtitleTv.text = subtitle
 
-                    val constraintLayout = findViewById<ConstraintLayout>(R.id.constraintLayout)
                     exercises?.let {
-                        var previousTextViewId = R.id.subtitleTv // Store the id of the previous TextView
-
-                        for (exercise in it) {
-                            val reps = exercise["reps"] ?: ""
-                            val sets = exercise["sets"] ?: ""
-                            val exerciseName = exercise["name"] ?: ""
-
-                            val exerciseDetails = "$exerciseName:  Reps: $reps, Sets: $sets"
-
-                            // Create a new TextView for each exercise and add it to the layout
-                            val newExerciseTextView = TextView(this)
-                            newExerciseTextView.text = exerciseDetails
-                            constraintLayout.addView(newExerciseTextView)
-
-                            // Set layout constraints for the new TextView
-                            val params = newExerciseTextView.layoutParams as ConstraintLayout.LayoutParams
-                            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-                            params.topToBottom = previousTextViewId // Set top constraint to the previous TextView
-                            params.topMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set margin between exercises
-                            params.bottomMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set bottom margin between exercises
-                            newExerciseTextView.layoutParams = params
-
-                            // Update previousTextViewId to current TextView's id
-                            previousTextViewId = newExerciseTextView.id
+                        for (exerciseMap in it) {
+                            val name = exerciseMap["name"] ?: ""
+                            val reps = exerciseMap["reps"] ?: ""
+                            val sets = exerciseMap["sets"] ?: ""
+                            exercisesList.add(ExerciseInWorkOut(name, reps, sets))
                         }
                     }
+                    exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
+
+//                    val constraintLayout = findViewById<ConstraintLayout>(R.id.constraintLayout)
+//                    exercises?.let {
+//                        var previousTextViewId = R.id.subtitleTv // Store the id of the previous TextView
+//
+//                        for (exercise in it) {
+//                            val reps = exercise["reps"] ?: ""
+//                            val sets = exercise["sets"] ?: ""
+//                            val exerciseName = exercise["name"] ?: ""
+//
+//                            val exerciseDetails = "$exerciseName:  Reps: $reps, Sets: $sets"
+//
+//                            // Create a new TextView for each exercise and add it to the layout
+//                            val newExerciseTextView = TextView(this)
+//                            newExerciseTextView.text = exerciseDetails
+//                            constraintLayout.addView(newExerciseTextView)
+//
+//                            // Set layout constraints for the new TextView
+//                            val params = newExerciseTextView.layoutParams as ConstraintLayout.LayoutParams
+//                            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+//                            params.topToBottom = previousTextViewId // Set top constraint to the previous TextView
+//                            params.topMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set margin between exercises
+//                            params.bottomMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set bottom margin between exercises
+//                            newExerciseTextView.layoutParams = params
+//
+//                            // Update previousTextViewId to current TextView's id
+//                            previousTextViewId = newExerciseTextView.id
+//                        }
+//                    }
 
                     // You can process the fetched data here if needed
 
