@@ -185,7 +185,7 @@ class ProfileFragment : Fragment() {
             binding.tvProfileHeight.text = createEditable(currentUser.height)
             binding.tvProfileGender.text = createEditable(currentUser.gender)
             binding.tvProfileAge.text = createEditable(currentUser.age)
-        // test
+
             val currentUser = auth.currentUser
             Log.e("ProfileFragment", "Before")
             if (currentUser != null) {
