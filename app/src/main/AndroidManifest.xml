@@ -38,7 +38,7 @@
         <activity
             android:name=".HomeFragment2Activity"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"
+            android:windowSoftInputMode="adjustPan"
             >
 
             <!-- <intent-filter> -->
