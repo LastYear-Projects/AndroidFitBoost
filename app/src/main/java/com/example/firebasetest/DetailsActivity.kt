@@ -1,11 +1,14 @@
 package com.example.firebasetest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginTop
 import androidx.core.view.setMargins
@@ -22,11 +25,12 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var exerciseRecyclerView: RecyclerView
     private lateinit var exerciseAdapter: ExerciseInWorkOutAdapter
     private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
-
+        firebaseAuth = FirebaseAuth.getInstance()
         val gym = intent.getParcelableExtra<Workout>("gym")
         exerciseRecyclerView = findViewById(R.id.exerciseRecyclerView)
 //        exerciseAdapter = ExerciseInWorkOutAdapter(emptyList()) // Initialize with an empty list
@@ -35,7 +39,6 @@ class DetailsActivity : AppCompatActivity() {
         exerciseRecyclerView.layoutManager = LinearLayoutManager(this)
 
         firestore = FirebaseFirestore.getInstance()
-
         if(gym != null){
             val textView: TextView = findViewById(R.id.detailedActivityTv)
             val imageView: ImageView = findViewById(R.id.detailedActivityIv)
@@ -50,6 +53,7 @@ class DetailsActivity : AppCompatActivity() {
             .whereEqualTo("title", name)
             .get()
             .addOnSuccessListener { result ->
+
                 for (document in result) {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
@@ -77,39 +81,33 @@ class DetailsActivity : AppCompatActivity() {
                     }
                     exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
 
-//                    val constraintLayout = findViewById<ConstraintLayout>(R.id.constraintLayout)
-//                    exercises?.let {
-//                        var previousTextViewId = R.id.subtitleTv // Store the id of the previous TextView
-//
-//                        for (exercise in it) {
-//                            val reps = exercise["reps"] ?: ""
-//                            val sets = exercise["sets"] ?: ""
-//                            val exerciseName = exercise["name"] ?: ""
-//
-//                            val exerciseDetails = "$exerciseName:  Reps: $reps, Sets: $sets"
-//
-//                            // Create a new TextView for each exercise and add it to the layout
-//                            val newExerciseTextView = TextView(this)
-//                            newExerciseTextView.text = exerciseDetails
-//                            constraintLayout.addView(newExerciseTextView)
-//
-//                            // Set layout constraints for the new TextView
-//                            val params = newExerciseTextView.layoutParams as ConstraintLayout.LayoutParams
-//                            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-//                            params.topToBottom = previousTextViewId // Set top constraint to the previous TextView
-//                            params.topMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set margin between exercises
-//                            params.bottomMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set bottom margin between exercises
-//                            newExerciseTextView.layoutParams = params
-//
-//                            // Update previousTextViewId to current TextView's id
-//                            previousTextViewId = newExerciseTextView.id
-//                        }
-//                    }
-
-                    // You can process the fetched data here if needed
-
                     // Example to log data
                     Log.e("Details", "Title: $title, ImageUrl: $imageUrl, Subtitle: $subtitle, Owner: $owner, Duration: $duration, Exercises: $exercises")
+                }
+                findViewById<Button>(R.id.removeWorkout).setOnClickListener {
+                    val name = intent.getParcelableExtra<Workout>("gym")?.name
+
+                    firestore.collection("exercise")
+                        .whereEqualTo("title", name)
+                        .get()
+                        .addOnSuccessListener { result ->
+                            for (document in result) {
+                                // Delete each document that matches the condition
+                                firestore.collection("exercise")
+                                    .document(document.id)
+                                    .delete()
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "Document was successfully deleted!", Toast.LENGTH_SHORT).show()
+                                        finishAndGoToHomeFragment()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w("TAG", "Error deleting document", e)
+                                    }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w("TAG", "Error getting documents: ", exception)
+                        }
                 }
             }
             .addOnFailureListener { exception ->
@@ -122,7 +120,14 @@ class DetailsActivity : AppCompatActivity() {
             }
     }
 
-
+    private fun finishAndGoToHomeFragment() {
+        val user = firebaseAuth.currentUser
+        if (user != null) {
+            val intent = Intent(this, HomeFragment2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 }
 

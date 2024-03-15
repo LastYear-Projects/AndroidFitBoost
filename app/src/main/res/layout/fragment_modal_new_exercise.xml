@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/tvExerciseName"
         android:layout_width="0dp"
@@ -26,15 +27,14 @@
         android:layout_marginEnd="16dp"
         android:background="@android:drawable/editbox_background"
         android:inputType="text"
-        android:text="Exercise Name"
+        android:selectAllOnFocus="true"
+        android:hint="Exercise Name"
         android:textColor="#191919"
         android:textSize="16sp"
-        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.319"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
 
     <TextView
         android:id="@+id/textView19"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="16dp"
         android:background="@android:drawable/editbox_background"
         android:inputType="text"
-        android:text="Explanation"
+        android:hint="Explanation"
         android:textColor="#191919"
         android:textSize="16sp"
         android:selectAllOnFocus="true"
