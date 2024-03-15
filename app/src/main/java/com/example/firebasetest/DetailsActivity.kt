@@ -81,37 +81,6 @@ class DetailsActivity : AppCompatActivity() {
                     }
                     exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
 
-//                    val constraintLayout = findViewById<ConstraintLayout>(R.id.constraintLayout)
-//                    exercises?.let {
-//                        var previousTextViewId = R.id.subtitleTv // Store the id of the previous TextView
-//
-//                        for (exercise in it) {
-//                            val reps = exercise["reps"] ?: ""
-//                            val sets = exercise["sets"] ?: ""
-//                            val exerciseName = exercise["name"] ?: ""
-//
-//                            val exerciseDetails = "$exerciseName:  Reps: $reps, Sets: $sets"
-//
-//                            // Create a new TextView for each exercise and add it to the layout
-//                            val newExerciseTextView = TextView(this)
-//                            newExerciseTextView.text = exerciseDetails
-//                            constraintLayout.addView(newExerciseTextView)
-//
-//                            // Set layout constraints for the new TextView
-//                            val params = newExerciseTextView.layoutParams as ConstraintLayout.LayoutParams
-//                            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-//                            params.topToBottom = previousTextViewId // Set top constraint to the previous TextView
-//                            params.topMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set margin between exercises
-//                            params.bottomMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set bottom margin between exercises
-//                            newExerciseTextView.layoutParams = params
-//
-//                            // Update previousTextViewId to current TextView's id
-//                            previousTextViewId = newExerciseTextView.id
-//                        }
-//                    }
-
-                    // You can process the fetched data here if needed
-
                     // Example to log data
                     Log.e("Details", "Title: $title, ImageUrl: $imageUrl, Subtitle: $subtitle, Owner: $owner, Duration: $duration, Exercises: $exercises")
                 }
