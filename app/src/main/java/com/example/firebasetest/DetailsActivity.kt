@@ -17,10 +17,9 @@ import com.squareup.picasso.Picasso
 
 
 class DetailsActivity : AppCompatActivity() {
-    private lateinit var firestore: FirebaseFirestore
+    private lateinit var fireStore: FirebaseFirestore
 
     private lateinit var exerciseRecyclerView: RecyclerView
-    private lateinit var exerciseAdapter: ExerciseInWorkOutAdapter
     private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ class DetailsActivity : AppCompatActivity() {
 //        exerciseRecyclerView.adapter = exerciseAdapter
         exerciseRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        firestore = FirebaseFirestore.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
 
         if(gym != null){
             val textView: TextView = findViewById(R.id.detailedActivityTv)
@@ -46,7 +45,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun fetchExerciseByName(name: String) {
-        firestore.collection("exercise")
+        fireStore.collection("exercise")
             .whereEqualTo("title", name)
             .get()
             .addOnSuccessListener { result ->

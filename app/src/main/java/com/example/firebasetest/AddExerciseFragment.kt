@@ -27,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 class AddExerciseFragment : Fragment() {
     private lateinit var binding: FragmentAddexeceriseBinding
     private lateinit var bindingTest: FragmentModalNewExerciseBinding
-    private lateinit var imageView: ImageView
     private lateinit var customDialog: AlertDialog
 
     private lateinit var firestore: FirebaseFirestore
@@ -49,27 +48,22 @@ class AddExerciseFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-
         binding = FragmentAddexeceriseBinding.inflate(inflater, container, false)
         bindingTest = FragmentModalNewExerciseBinding.inflate(inflater, container, false)
 
         titleTextView = binding.textView15
-
         binding.execeriseRecyclerView.setHasFixedSize(true)
         binding.execeriseRecyclerView.layoutManager = LinearLayoutManager(activity)
 
         execeriseList = ArrayList()
-
         ExeceriseRecyclerView = binding.execeriseRecyclerView
         ExeceriseRecyclerView.setHasFixedSize(true)
         ExeceriseRecyclerView.layoutManager = LinearLayoutManager(activity)
-
 
         execeriseAdapter = ExeceriseAdapter(execeriseList){
             updateTitleWithExercisesCount()
         }
         binding.execeriseRecyclerView.adapter = execeriseAdapter
-
         binding.btnShort.setOnClickListener {
             resetButtonColors()
             it.setBackgroundColor(Color.GRAY)
@@ -91,7 +85,6 @@ class AddExerciseFragment : Fragment() {
         binding.btnCreateworkout.setOnClickListener {
             createWorkout()
         }
-
         return binding.root
     }
 
@@ -99,7 +92,6 @@ class AddExerciseFragment : Fragment() {
         val title = "Exercises (${execeriseList.size}) :"
         titleTextView.text = title
     }
-
 
     private fun resetButtonColors() {
         binding.btnShort.setBackgroundColor(Color.BLACK)
@@ -140,8 +132,6 @@ class AddExerciseFragment : Fragment() {
             .addOnFailureListener {
                 Log.e("test", "Error adding workout", it)
             }
-
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -153,7 +143,6 @@ class AddExerciseFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setView(customLayout)
         builder.setTitle("New Exercise")
-
         customDialog = builder.create()
         customDialog.show()
 
