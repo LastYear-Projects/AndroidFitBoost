@@ -36,11 +36,17 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker at the specified location
         val locationLatLng = LatLng(latitude, longitude)
+        val locationLatLng2 = LatLng(latitude+5.002, longitude+5.002)
+        val locationLatLng3 = LatLng(latitude+9.007, longitude+9.007)
+        val locationLatLng4 = LatLng(latitude+7.007, longitude+2.007)
         mGoogleMap?.addMarker(MarkerOptions().position(locationLatLng).title("Current Location"))
+        mGoogleMap?.addMarker(MarkerOptions().position(locationLatLng2).title("Benda's Location"))
+        mGoogleMap?.addMarker(MarkerOptions().position(locationLatLng3).title("Yuval's Location"))
+        mGoogleMap?.addMarker(MarkerOptions().position(locationLatLng4).title("Idan's Location"))
 
         // Default location set to Tel Aviv, Israel
         val defaultLocation = LatLng(latitude, longitude)
-        mGoogleMap?.addMarker(MarkerOptions().position(defaultLocation).title("Your Current Location $latitude $longitude"))
+        mGoogleMap?.addMarker(MarkerOptions().position(defaultLocation).title("Your Current Location"))
         mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
 
         //TODO -> Fetch the all favorite Exercise from the current user and add markers for each one.
