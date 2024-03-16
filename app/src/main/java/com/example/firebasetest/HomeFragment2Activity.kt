@@ -61,7 +61,7 @@ class HomeFragment2Activity : AppCompatActivity() {
             }
             true
         }
-
+//
     }
 
     private fun replaceFragment(fragment: Fragment){
