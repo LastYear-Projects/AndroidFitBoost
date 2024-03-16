@@ -62,8 +62,8 @@ class DetailsActivity : AppCompatActivity() {
                     val exercises = document.get("exercises") as? ArrayList<HashMap<String, String>>
 
                     val user = firebaseAuth.currentUser?.email
-                    if(user!=owner){
-                        findViewById<Button>(R.id.removeWorkout).visibility = View.GONE
+                    if(user==owner){
+                        findViewById<Button>(R.id.removeWorkout).visibility = View.VISIBLE
                     }
 
                     val ownerTv = findViewById<TextView>(R.id.ownerTv)
