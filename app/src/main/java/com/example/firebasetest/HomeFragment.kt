@@ -19,7 +19,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var loaderView : ProgressBar
 
-    private val firestore = FirebaseFirestore.getInstance()
+    private val fireStore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,16 +52,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchExercises() {
-        firestore.collection("exercise")
+        fireStore.collection("exercise")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
                     val subtitle = document.getString("subtitle") ?: ""
-//                    val owner = document.getString("owner") ?: ""
-//                    val duration = document.getString("duration") ?: ""
-//                    val list = document.get("list") as ArrayList<*>
                     workoutList.add(Workout(imageUrl, title, subtitle))
                 }
                 workoutAdapter.notifyDataSetChanged()

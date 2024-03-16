@@ -1,14 +1,15 @@
 package com.example.firebasetest
 
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginTop
 import androidx.core.view.setMargins
@@ -20,12 +21,10 @@ import com.squareup.picasso.Picasso
 
 
 class DetailsActivity : AppCompatActivity() {
-    private lateinit var firestore: FirebaseFirestore
-
-    private lateinit var exerciseRecyclerView: RecyclerView
-    private lateinit var exerciseAdapter: ExerciseInWorkOutAdapter
-    private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
+    private lateinit var fireStore: FirebaseFirestore
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var exerciseRecyclerView: RecyclerView
+    private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +37,8 @@ class DetailsActivity : AppCompatActivity() {
 //        exerciseRecyclerView.adapter = exerciseAdapter
         exerciseRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        firestore = FirebaseFirestore.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
+
         if(gym != null){
             val textView: TextView = findViewById(R.id.detailedActivityTv)
             val imageView: ImageView = findViewById(R.id.detailedActivityIv)
@@ -49,11 +49,10 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun fetchExerciseByName(name: String) {
-        firestore.collection("exercise")
+        fireStore.collection("exercise")
             .whereEqualTo("title", name)
             .get()
             .addOnSuccessListener { result ->
-
                 for (document in result) {
                     val title = document.getString("title") ?: ""
                     val imageUrl = document.getString("image") ?: ""
@@ -61,6 +60,11 @@ class DetailsActivity : AppCompatActivity() {
                     val owner = document.getString("owner") ?: ""
                     val duration = document.getString("duration") ?: ""
                     val exercises = document.get("exercises") as? ArrayList<HashMap<String, String>>
+
+                    val user = firebaseAuth.currentUser?.email
+                    if(user!=owner){
+                        findViewById<Button>(R.id.removeWorkout).visibility = View.GONE
+                    }
 
                     val ownerTv = findViewById<TextView>(R.id.ownerTv)
                     ownerTv.text = owner
@@ -81,19 +85,19 @@ class DetailsActivity : AppCompatActivity() {
                     }
                     exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
 
-                    // Example to log data
+// Example to log data
                     Log.e("Details", "Title: $title, ImageUrl: $imageUrl, Subtitle: $subtitle, Owner: $owner, Duration: $duration, Exercises: $exercises")
                 }
                 findViewById<Button>(R.id.removeWorkout).setOnClickListener {
                     val name = intent.getParcelableExtra<Workout>("gym")?.name
 
-                    firestore.collection("exercise")
+                    fireStore.collection("exercise")
                         .whereEqualTo("title", name)
                         .get()
                         .addOnSuccessListener { result ->
                             for (document in result) {
                                 // Delete each document that matches the condition
-                                firestore.collection("exercise")
+                                fireStore.collection("exercise")
                                     .document(document.id)
                                     .delete()
                                     .addOnSuccessListener {
@@ -130,8 +134,3 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 }
-
-/*
-Example to log:
-            Log.e("Details", gym.name)
- */

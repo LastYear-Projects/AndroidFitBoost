@@ -36,7 +36,6 @@ class CurrentAndroidLocation : AppCompatActivity() {
         getCurrentLocation()
     }
 
-
     private fun getCurrentLocation() {
         if(checkPermission()){
             if(isLocationEnabled()){
