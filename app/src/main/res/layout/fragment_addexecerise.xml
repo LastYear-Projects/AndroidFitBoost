@@ -124,7 +124,10 @@
         app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:id="@+id/textView15"
@@ -136,12 +139,12 @@
         android:textColor="#191919"
         android:textSize="16sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/execeriseRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLong" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnLong"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/pictureUrlTitle"
@@ -149,9 +152,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="316dp"
+        android:layout_marginBottom="74dp"
         android:text="Picture URL"
         android:textColor="#191919"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddExercises" />
@@ -166,6 +171,8 @@
         android:layout_marginTop="8dp"
         app:boxStrokeColor="@color/yellow"
         app:hintTextColor="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         >
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -176,6 +183,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="621dp"
         android:layout_marginBottom="16dp"
         android:background="@color/yellow"
         android:text="Create Workout"
@@ -185,7 +193,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/execeriseRecyclerView"

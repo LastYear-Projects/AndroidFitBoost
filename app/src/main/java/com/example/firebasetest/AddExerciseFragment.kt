@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
@@ -131,9 +133,12 @@ class AddExerciseFragment : Fragment() {
         firestore.collection("exercise").add(workout)
             .addOnSuccessListener {
                 Log.e("test", "Workout added successfully")
+                Toast.makeText(requireContext(), "Workout added successfully", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Log.e("test", "Error adding workout", it)
+                Toast.makeText(requireContext(), "Error adding workout", Toast.LENGTH_SHORT).show()
+
             }
     }
 

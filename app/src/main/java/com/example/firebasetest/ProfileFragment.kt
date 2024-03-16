@@ -39,6 +39,7 @@ class ProfileFragment : Fragment() {
     private var isEditMode = false
     private lateinit var mUserViewModel: RoomUserViewModel
 
+    lateinit var weight: String
     companion object{
         val IMAGE_REQUEST_CODE = 100
     }
@@ -174,20 +175,31 @@ class ProfileFragment : Fragment() {
         binding.loader.visibility = View.VISIBLE
         checkVisible()
 
+        val currentUser = auth.currentUser
+        firestore.collection("users")
+            .whereEqualTo("email", currentUser?.email)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    weight = document.getString("weight").toString()
+                }
+            }
 
         // Fetch the current user data from the ViewModel
         mUserViewModel.getCurrentUserLiveData().observe(viewLifecycleOwner) { currentUser ->
             // Update UI with the current user's data
-            binding.tvProfileName.text = createEditable(currentUser.fullName)
-            binding.tvProfilePhone.text = createEditable(currentUser.phone)
-            binding.tvProfileEmail.text = createEditable(currentUser.email)
-            binding.tvProfileWeight.text = createEditable(currentUser.weight)
-            binding.tvProfileHeight.text = createEditable(currentUser.height)
-            binding.tvProfileGender.text = createEditable(currentUser.gender)
-            binding.tvProfileAge.text = createEditable(currentUser.age)
+            if(currentUser != null){
+                binding.tvProfileName.text = createEditable(currentUser.fullName)
+                binding.tvProfilePhone.text = createEditable(currentUser.phone)
+                binding.tvProfileEmail.text = createEditable(currentUser.email)
+                binding.tvProfileWeight.text = createEditable(currentUser.weight)
+                binding.tvProfileHeight.text = createEditable(currentUser.height)
+                binding.tvProfileGender.text = createEditable(currentUser.gender)
+                binding.tvProfileAge.text = createEditable(currentUser.age)
+            }
 
-            val currentUser = auth.currentUser
             Log.e("ProfileFragment", "Before")
+            val currentUser = auth.currentUser
             if (currentUser != null) {
                 val userId = currentUser.uid
                 Log.e("ProfileFragment", "After")
