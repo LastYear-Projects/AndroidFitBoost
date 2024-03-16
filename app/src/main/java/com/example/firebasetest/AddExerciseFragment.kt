@@ -110,7 +110,8 @@ class AddExerciseFragment : Fragment() {
             binding.btnLong.isActivated -> "Long"
             else -> "Medium"
         }
-        val pictureUrl=binding.pictureUrlValue.text.toString()
+        var pictureUrl=binding.pictureUrlValue.text.toString()
+        if(pictureUrl == null) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
         Log.e("test",workoutName)
         Log.e("test",workoutDuration)
         Log.e("test",pictureUrl)
