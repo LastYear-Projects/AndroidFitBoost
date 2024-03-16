@@ -110,6 +110,7 @@ class AddExerciseFragment : Fragment() {
             binding.btnLong.isActivated -> "Long"
             else -> "Medium"
         }
+        val subTitle = "test"
         var pictureUrl=binding.pictureUrlValue.text.toString()
         if(pictureUrl == null) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
         Log.e("test",workoutName)
@@ -123,7 +124,8 @@ class AddExerciseFragment : Fragment() {
             "duration" to workoutDuration,
             "image" to pictureUrl,
             "exercises" to execeriseList,
-            "owner" to owner
+            "owner" to owner,
+            "subtitle" to subTitle
         )
 
         firestore.collection("exercise").add(workout)
