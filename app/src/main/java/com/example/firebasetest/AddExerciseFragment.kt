@@ -1,5 +1,6 @@
 package com.example.firebasetest
 
+import ProfileFragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
@@ -112,7 +113,8 @@ class AddExerciseFragment : Fragment() {
             binding.btnLong.isActivated -> "Long"
             else -> "Medium"
         }
-        val subTitle = "test"
+        var subTitleValue = binding.subTitleValue.text.toString()
+        if(subTitleValue == null) subTitleValue = "This is a Amazing Workout"
         var pictureUrl=binding.pictureUrlValue.text.toString()
         if(pictureUrl == null) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
         Log.e("test",workoutName)
@@ -127,13 +129,20 @@ class AddExerciseFragment : Fragment() {
             "image" to pictureUrl,
             "exercises" to execeriseList,
             "owner" to owner,
-            "subtitle" to subTitle
+            "subtitle" to subTitleValue
         )
+
 
         firestore.collection("exercise").add(workout)
             .addOnSuccessListener {
                 Log.e("test", "Workout added successfully")
                 Toast.makeText(requireContext(), "Workout added successfully", Toast.LENGTH_SHORT).show()
+                val fragmentManager = requireActivity().supportFragmentManager
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.frame_layout, ProfileFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+
             }
             .addOnFailureListener {
                 Log.e("test", "Error adding workout", it)
@@ -176,6 +185,8 @@ class AddExerciseFragment : Fragment() {
         }
 
     }
+
+
 
 
 }

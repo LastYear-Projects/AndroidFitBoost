@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".SignUpActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".AddExerciseFragment">
 
 
@@ -146,6 +152,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLong"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <TextView
         android:id="@+id/pictureUrlTitle"
         android:layout_width="wrap_content"
@@ -158,10 +165,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddExercises" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btnAddExercises"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pictureUrlString"
@@ -192,9 +199,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/execeriseRecyclerView"
@@ -210,8 +218,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/pictureUrlValue"
-        android:layout_width="384dp"
-        android:layout_height="45dp"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="22dp"
         android:hint="Enter picture URL"
@@ -219,10 +227,42 @@
         android:selectAllOnFocus="true"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pictureUrlTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/pictureUrlTitle"
+        app:layout_constraintVertical_bias="0.333" />
 
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="77dp"
+        android:text="SubTitle"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/pictureUrlTitle"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddExercises"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/subTitleValue"
+        android:layout_width="178dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="52dp"
+        android:hint="Enter Subtitle"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateworkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pictureUrlValue"
+        app:layout_constraintTop_toBottomOf="@+id/textView36"
+        app:layout_constraintVertical_bias="0.19" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
