@@ -1,8 +1,12 @@
 package com.example.firebasetest
 
+import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -18,14 +22,14 @@ import com.squareup.picasso.Picasso
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var fireStore: FirebaseFirestore
-
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var exerciseRecyclerView: RecyclerView
     private lateinit var exercisesList: ArrayList<ExerciseInWorkOut>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
-
+        firebaseAuth = FirebaseAuth.getInstance()
         val gym = intent.getParcelableExtra<Workout>("gym")
         exerciseRecyclerView = findViewById(R.id.exerciseRecyclerView)
 //        exerciseAdapter = ExerciseInWorkOutAdapter(emptyList()) // Initialize with an empty list
@@ -57,6 +61,11 @@ class DetailsActivity : AppCompatActivity() {
                     val duration = document.getString("duration") ?: ""
                     val exercises = document.get("exercises") as? ArrayList<HashMap<String, String>>
 
+                    val user = firebaseAuth.currentUser?.email
+                    if(user!=owner){
+                        findViewById<Button>(R.id.removeWorkout).visibility = View.GONE
+                    }
+
                     val ownerTv = findViewById<TextView>(R.id.ownerTv)
                     ownerTv.text = owner
 
@@ -76,39 +85,33 @@ class DetailsActivity : AppCompatActivity() {
                     }
                     exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
 
-//                    val constraintLayout = findViewById<ConstraintLayout>(R.id.constraintLayout)
-//                    exercises?.let {
-//                        var previousTextViewId = R.id.subtitleTv // Store the id of the previous TextView
-//
-//                        for (exercise in it) {
-//                            val reps = exercise["reps"] ?: ""
-//                            val sets = exercise["sets"] ?: ""
-//                            val exerciseName = exercise["name"] ?: ""
-//
-//                            val exerciseDetails = "$exerciseName:  Reps: $reps, Sets: $sets"
-//
-//                            // Create a new TextView for each exercise and add it to the layout
-//                            val newExerciseTextView = TextView(this)
-//                            newExerciseTextView.text = exerciseDetails
-//                            constraintLayout.addView(newExerciseTextView)
-//
-//                            // Set layout constraints for the new TextView
-//                            val params = newExerciseTextView.layoutParams as ConstraintLayout.LayoutParams
-//                            params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-//                            params.topToBottom = previousTextViewId // Set top constraint to the previous TextView
-//                            params.topMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set margin between exercises
-//                            params.bottomMargin = resources.getDimensionPixelSize(R.dimen.exercise_margin) // Set bottom margin between exercises
-//                            newExerciseTextView.layoutParams = params
-//
-//                            // Update previousTextViewId to current TextView's id
-//                            previousTextViewId = newExerciseTextView.id
-//                        }
-//                    }
-
-                    // You can process the fetched data here if needed
-
-                    // Example to log data
+// Example to log data
                     Log.e("Details", "Title: $title, ImageUrl: $imageUrl, Subtitle: $subtitle, Owner: $owner, Duration: $duration, Exercises: $exercises")
+                }
+                findViewById<Button>(R.id.removeWorkout).setOnClickListener {
+                    val name = intent.getParcelableExtra<Workout>("gym")?.name
+
+                    fireStore.collection("exercise")
+                        .whereEqualTo("title", name)
+                        .get()
+                        .addOnSuccessListener { result ->
+                            for (document in result) {
+                                // Delete each document that matches the condition
+                                fireStore.collection("exercise")
+                                    .document(document.id)
+                                    .delete()
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "Document was successfully deleted!", Toast.LENGTH_SHORT).show()
+                                        finishAndGoToHomeFragment()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w("TAG", "Error deleting document", e)
+                                    }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w("TAG", "Error getting documents: ", exception)
+                        }
                 }
             }
             .addOnFailureListener { exception ->
@@ -121,11 +124,13 @@ class DetailsActivity : AppCompatActivity() {
             }
     }
 
-
+    private fun finishAndGoToHomeFragment() {
+        val user = firebaseAuth.currentUser
+        if (user != null) {
+            val intent = Intent(this, HomeFragment2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 }
-
-/*
-Example to log:
-            Log.e("Details", gym.name)
- */

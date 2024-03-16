@@ -114,9 +114,9 @@ class AddExerciseFragment : Fragment() {
             else -> "Medium"
         }
         var subTitleValue = binding.subTitleValue.text.toString()
-        if(subTitleValue == null) subTitleValue = "This is a Amazing Workout"
+        if(subTitleValue.isEmpty()) subTitleValue = "This is an amazing workout"
         var pictureUrl=binding.pictureUrlValue.text.toString()
-        if(pictureUrl == null) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
+        if(pictureUrl.isEmpty()) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
         Log.e("test",workoutName)
         Log.e("test",workoutDuration)
         Log.e("test",pictureUrl)
