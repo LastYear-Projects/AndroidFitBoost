@@ -142,6 +142,8 @@ class ProfileFragment : Fragment() {
             binding.textView26.visibility = View.GONE
             binding.textView27.visibility = View.GONE
             binding.textView29.visibility = View.GONE
+            binding.btnCM.visibility = View.GONE
+            binding.btnKG.visibility = View.GONE
             binding.btnEdit.visibility = View.GONE
             binding.btnMyWorkouts.visibility = View.GONE
         }else{
@@ -162,6 +164,8 @@ class ProfileFragment : Fragment() {
             binding.textView26.visibility = View.VISIBLE
             binding.textView27.visibility = View.VISIBLE
             binding.textView29.visibility = View.VISIBLE
+            binding.btnCM.visibility = View.VISIBLE
+            binding.btnKG.visibility = View.VISIBLE
             binding.btnEdit.visibility = View.VISIBLE
             binding.btnMyWorkouts.visibility = View.VISIBLE
         }
