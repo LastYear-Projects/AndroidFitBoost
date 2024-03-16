@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
                     workoutList.add(Workout(imageUrl, title, subtitle))
                 }
                 workoutAdapter.notifyDataSetChanged()
-
+//
             }
             .addOnFailureListener { exception ->
                 Log.e("HomeFragment", "error: ${exception.message.toString()}")
