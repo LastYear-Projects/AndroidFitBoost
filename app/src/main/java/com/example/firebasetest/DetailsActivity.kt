@@ -91,6 +91,17 @@ class DetailsActivity : AppCompatActivity() {
                 findViewById<Button>(R.id.removeWorkout).setOnClickListener {
                     val name = intent.getParcelableExtra<Workout>("gym")?.name
 
+                    fireStore.collection("location").whereEqualTo("title", name)
+                        .get()
+                        .addOnSuccessListener{result ->
+                            for(document in result){
+                                fireStore.collection("location")
+                                    .document(document.id)
+                                    .delete()
+                            }
+
+                        }
+
                     fireStore.collection("exercise")
                         .whereEqualTo("title", name)
                         .get()

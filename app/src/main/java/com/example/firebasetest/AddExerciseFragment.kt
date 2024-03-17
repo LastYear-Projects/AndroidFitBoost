@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import kotlin.random.Random
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -132,11 +133,32 @@ class AddExerciseFragment : Fragment() {
             "subtitle" to subTitleValue
         )
 
+        val currentLatitude = 37.4220936
+        val currentLongitude = -122.083922
+
+        val minLatitude = currentLatitude - 3.05
+        val maxLatitude = currentLatitude + 10.05
+        val minLongitude = currentLongitude - 3.05
+        val maxLongitude = currentLongitude + 10.05
+
+        val randomLatitude = generateRandomLatitude(minLatitude, maxLatitude)
+        val randomLongitude = generateRandomLongitude(minLongitude, maxLongitude)
+
+
+
+        val location = hashMapOf(
+            "title" to workoutName,
+            "latitude" to randomLatitude,
+            "longitude" to randomLongitude
+        )
+
+        firestore.collection("location").add(location)
 
         firestore.collection("exercise").add(workout)
             .addOnSuccessListener {
                 Log.e("test", "Workout added successfully")
                 Toast.makeText(requireContext(), "Workout added successfully", Toast.LENGTH_SHORT).show()
+
                 val fragmentManager = requireActivity().supportFragmentManager
                 val transaction = fragmentManager.beginTransaction()
                 transaction.replace(R.id.frame_layout, ProfileFragment())
@@ -149,6 +171,16 @@ class AddExerciseFragment : Fragment() {
                 Toast.makeText(requireContext(), "Error adding workout", Toast.LENGTH_SHORT).show()
 
             }
+    }
+
+    // Function to generate random latitude within a specified range
+    fun generateRandomLatitude(minLat: Double, maxLat: Double): Double {
+        return minLat + (maxLat - minLat) * Random.nextDouble()
+    }
+
+    // Function to generate random longitude within a specified range
+    fun generateRandomLongitude(minLng: Double, maxLng: Double): Double {
+        return minLng + (maxLng - minLng) * Random.nextDouble()
     }
 
     @SuppressLint("NotifyDataSetChanged")
