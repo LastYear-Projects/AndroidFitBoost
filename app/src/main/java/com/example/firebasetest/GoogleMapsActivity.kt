@@ -81,7 +81,6 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //TODO -> Fetch the all favorite Exercise from the current user and add markers for each one.
 
-        // Move the camera to the specified location
 //        mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLng(locationLatLng))
 //        mGoogleMap?.animateCamera(CameraUpdateFactory.zoomTo(15.0f)) // You can adjust the zoom level as needed
     }
