@@ -9,7 +9,6 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -57,8 +56,6 @@ class CurrentAndroidLocation : AppCompatActivity() {
                         Toast.makeText(this, "Get Success", Toast.LENGTH_SHORT).show()
                         tvLatitude.text = location.latitude.toString()
                         tvLongitude.text = location.longitude.toString()
-                        // can remove from here down.
-                        // Move the camera to the current location after the layout is set
                         tvLongitude.post {
                             val intent = Intent(this, GoogleMapsActivity::class.java)
                             intent.putExtra("latitude", location.latitude)

@@ -22,11 +22,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
             val email = binding.emailEt.text.toString()
             auth.sendPasswordResetEmail(email).addOnCompleteListener{
                 if(it.isSuccessful){
-                    // email is send
                     Toast.makeText(this, "Email sent!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, SignInActivity::class.java)
                     startActivity(intent)
-
                     finish()
                 }
             }

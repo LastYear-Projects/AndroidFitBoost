@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
 import com.google.firebase.auth.FirebaseAuth
@@ -25,15 +24,11 @@ class HomeFragment2Activity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
-
-
-
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.exercise -> replaceFragment(AddExerciseFragment())
-//                R.id.favorite -> replaceFragment(FavoriteFragment())
                 R.id.map -> {
                     val intent = Intent(this, CurrentAndroidLocation::class.java)
                     startActivity(intent)
@@ -56,12 +51,10 @@ class HomeFragment2Activity : AppCompatActivity() {
                     }
                 }
                 else ->{
-
                 }
             }
             true
         }
-//
     }
 
     private fun replaceFragment(fragment: Fragment){

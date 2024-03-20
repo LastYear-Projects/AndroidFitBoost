@@ -1,4 +1,3 @@
-
 package com.example.firebasetest
 
 import android.content.Intent
@@ -6,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.firebasetest.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,12 +25,6 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val user = firebaseAuth.currentUser
             if( user != null){
-                // Make this page like a Loader that before the pages are upload they will see a Loader.
-//                val intent = Intent(this, HomePageActivity::class.java).also {
-//                    it.putExtra("details", user.email)
-//                    startActivity(it)
-//                    finish()
-//                } //Create the HomePage and change it for the homepage.
                 val intent = Intent(this, HomeFragment2Activity::class.java)
                 startActivity(intent)
                 finish()

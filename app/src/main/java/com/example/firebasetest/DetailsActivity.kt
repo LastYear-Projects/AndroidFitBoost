@@ -32,9 +32,7 @@ class DetailsActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         val gym = intent.getParcelableExtra<Workout>("gym")
         exerciseRecyclerView = findViewById(R.id.exerciseRecyclerView)
-//        exerciseAdapter = ExerciseInWorkOutAdapter(emptyList()) // Initialize with an empty list
         exercisesList = ArrayList()
-//        exerciseRecyclerView.adapter = exerciseAdapter
         exerciseRecyclerView.layoutManager = LinearLayoutManager(this)
 
         fireStore = FirebaseFirestore.getInstance()
@@ -84,8 +82,6 @@ class DetailsActivity : AppCompatActivity() {
                         }
                     }
                     exerciseRecyclerView.adapter = ExerciseInWorkOutAdapter(exercisesList)
-
-// Example to log data
                     Log.e("Details", "Title: $title, ImageUrl: $imageUrl, Subtitle: $subtitle, Owner: $owner, Duration: $duration, Exercises: $exercises")
                 }
                 findViewById<Button>(R.id.removeWorkout).setOnClickListener {
@@ -99,7 +95,6 @@ class DetailsActivity : AppCompatActivity() {
                                     .document(document.id)
                                     .delete()
                             }
-
                         }
 
                     fireStore.collection("exercise")

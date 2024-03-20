@@ -1,6 +1,5 @@
 import android.content.Intent
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -15,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.FavoriteFragment
 import com.example.firebasetest.MyWorkoutsActivity
 import com.example.firebasetest.R
-import com.example.firebasetest.SignInActivity
 import com.example.firebasetest.databinding.FragmentProfileBinding
 import com.example.firebasetest.user.model.RoomUser
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
@@ -24,7 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
-import java.util.*
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -100,7 +97,6 @@ class ProfileFragment : Fragment() {
             val email = binding.tvProfileEmail.text.toString()
             auth.sendPasswordResetEmail(email).addOnCompleteListener{
                 if(it.isSuccessful){
-                    // email is send
                     Toast.makeText(requireContext(), "Email sent!", Toast.LENGTH_SHORT).show()
                 }else{
                     Toast.makeText(requireContext(), it.exception?.message.toString(), Toast.LENGTH_SHORT).show()
@@ -198,12 +194,9 @@ class ProfileFragment : Fragment() {
                 binding.tvProfileAge.text = createEditable(currentUser.age)
             }
 
-            Log.e("ProfileFragment", "Before")
             val currentUser = auth.currentUser
             if (currentUser != null) {
                 val userId = currentUser.uid
-                Log.e("ProfileFragment", "After")
-                // Construct the storage reference for the user's image
                 val imageReference = FirebaseStorage.getInstance().getReference("images/$userId.jpg")
                 binding.loader.visibility = View.GONE
                 checkVisible()
@@ -229,10 +222,6 @@ class ProfileFragment : Fragment() {
         }
 
     }
-//    private fun downloadAndSetImage(imageUrl: String) {
-//        Log.d("ProfileFragment", "Downloading image from: $imageUrl")
-//        Picasso.get().load(imageUrl).into(binding.imageView)
-//    }
 
     private fun disableEditModeFirst(){
         binding.tvProfileName.isEnabled = false

@@ -18,7 +18,6 @@ class MyWorkoutsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var workoutList: ArrayList<Workout>
     private lateinit var workoutAdapter: WorkoutAdapter
-//    private lateinit var loaderView: ProgressBar
     private lateinit var auth: FirebaseAuth
 
     private val dataBase = FirebaseFirestore.getInstance()
@@ -27,7 +26,6 @@ class MyWorkoutsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_workouts2)
 
-//        loaderView.visibility = View.GONE
         recyclerView = findViewById(R.id.rv_MyWorkouts)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
@@ -53,8 +51,6 @@ class MyWorkoutsActivity : AppCompatActivity() {
                 Log.e("myWorkOuts", workoutList.toString())
                 recyclerView.adapter = WorkoutAdapter(workoutList);
                 workoutAdapter.notifyDataSetChanged()
-
-
             }
             .addOnFailureListener { exception ->
                 Log.e("MyWorkOuts2", "error: ${exception.message.toString()}")
