@@ -2,7 +2,6 @@ package com.example.firebasetest
 
 import ProfileFragment
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
 import kotlin.random.Random
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firebasetest.databinding.ActivityHomeFragment2Binding
 import com.example.firebasetest.databinding.FragmentAddexeceriseBinding
-import com.example.firebasetest.databinding.FragmentFavoriteBinding
-import com.example.firebasetest.databinding.FragmentHomeBinding
 import com.example.firebasetest.databinding.FragmentModalNewExerciseBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -118,10 +112,7 @@ class AddExerciseFragment : Fragment() {
         if(subTitleValue.isEmpty()) subTitleValue = "This is an amazing workout"
         var pictureUrl=binding.pictureUrlValue.text.toString()
         if(pictureUrl.isEmpty()) pictureUrl = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
-        Log.e("test",workoutName)
-        Log.e("test",workoutDuration)
-        Log.e("test",pictureUrl)
-        Log.e("test",execeriseList.size.toString())
+
         val owner=firebaseAuth.currentUser?.email.toString()
 
         val workout = hashMapOf(
@@ -172,13 +163,9 @@ class AddExerciseFragment : Fragment() {
 
             }
     }
-
-    // Function to generate random latitude within a specified range
     fun generateRandomLatitude(minLat: Double, maxLat: Double): Double {
         return minLat + (maxLat - minLat) * Random.nextDouble()
     }
-
-    // Function to generate random longitude within a specified range
     fun generateRandomLongitude(minLng: Double, maxLng: Double): Double {
         return minLng + (maxLng - minLng) * Random.nextDouble()
     }

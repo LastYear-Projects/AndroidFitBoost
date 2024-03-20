@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebasetest.databinding.ActivitySignUpBinding
-import com.example.firebasetest.user.RoomMainActivity
 import com.example.firebasetest.user.model.RoomUser
 import com.example.firebasetest.user.viewmodel.RoomUserViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -76,12 +75,9 @@ class SignUpActivity : AppCompatActivity() {
                         firebaseAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener {
                                 if (it.isSuccessful) {
-                                    // Create RoomUser instance
                                     val user = RoomUser(0, fullName , email, weight, height, gender, age, phone)
-                                    // Add the user to the Room database
                                     mUserViewModel.addUser(user)
 
-                                    // Save the user to Firestore
                                     saveUserToFirestore(user)
 
                                     Toast.makeText(
@@ -90,7 +86,6 @@ class SignUpActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     val intent = Intent(this, SignInActivity::class.java)
-//                                    val intent = Intent(this, RoomMainActivity::class.java)
                                     startActivity(intent)
                                     finish()
                                 } else {
@@ -116,45 +111,36 @@ class SignUpActivity : AppCompatActivity() {
                     binding.phone.isErrorEnabled = true
                     binding.phone.error = "Phone can't be empty"
                 }
-
                 if(binding.emailEt.text.toString().isEmpty()){
                     binding.emailLayout.isErrorEnabled = true
                     binding.emailLayout.error = "Email can't be empty"
                 }
-
                 if(binding.passET.text.toString().isEmpty()){
                     binding.passwordLayout.isErrorEnabled = true
                     binding.passwordLayout.error = "Password can't be empty"
                 }
-
                 if(binding.confirmPassEt.text.toString().isEmpty()){
                     binding.confirmPasswordLayout.isErrorEnabled = true
                     binding.confirmPasswordLayout.error = "Confirm Password can't be empty"
                 }
-
                 if(binding.weightEt.text.toString().isEmpty()){
                     binding.weightLayout.isErrorEnabled = true
                     binding.weightLayout.error = "Weight can't be empty"
                 }
-
                 if(binding.heightEt.text.toString().isEmpty()){
                     binding.heightLayout.isErrorEnabled = true
                     binding.heightLayout.error = "Height can't be empty"
                 }
-
                 if(binding.genderEt.text.toString().isEmpty()){
                     binding.genderLayout.isErrorEnabled = true
                     binding.genderLayout.error = "Gender can't be empty"
                 }
-
                 if(binding.ageEt.text.toString().isEmpty()){
                     binding.ageLayout.isErrorEnabled = true
                     binding.ageLayout.error = "Age can't be empty"
                 }
-
             }
         }
-
     }
 
     private fun saveUserToFirestore(user: RoomUser) {
@@ -167,7 +153,6 @@ class SignUpActivity : AppCompatActivity() {
             "age" to user.age,
             "phone" to user.phone
         )
-
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
             val userId = currentUser.uid
@@ -175,7 +160,6 @@ class SignUpActivity : AppCompatActivity() {
 
             userDocument.set(userMap)
                 .addOnSuccessListener { documentReference ->
-                    // Get the document ID from the DocumentReference using getId()
                     val documentId = documentReference
                     Log.d("Firestore", "User data added successfully. Document ID: $documentId")
                 }
@@ -186,7 +170,4 @@ class SignUpActivity : AppCompatActivity() {
             Log.e("Firestore", "Current user is null. User data not saved to Firestore.")
         }
     }
-
-
-
 }
