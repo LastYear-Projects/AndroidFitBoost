@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.firebasetest.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
-
+ // bendas code
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
